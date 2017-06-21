@@ -28,7 +28,7 @@ public class Client extends AbstractClient {
 
 	public static JFrame clientGUI;
 	public static Client client;
-    User user;
+    public static User user;
     
 	/**
 	 * Constructor for creating the client.
@@ -88,7 +88,16 @@ public class Client extends AbstractClient {
 		int op = ((Request)msg).getRtype();
 		System.out.println("Code: "+op);
 		switch(op){
-		case 5:
+		case 4:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				((HomeUI)clientGUI).logout();
+			}
+			else{
+				//System Error
+			}
+			break;
+		case 5://Login Case
 			if(((Request)msg).getRequest() instanceof Boolean)
 			{
 				((LoginUI)clientGUI).lblerr.setForeground(Color.RED);

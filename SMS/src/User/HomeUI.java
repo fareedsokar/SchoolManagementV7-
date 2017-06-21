@@ -6,10 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.prism.paint.Color;
+
+import OurMessage.Message;
+import OurMessage.QTypes;
+import chat.Client;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class HomeUI extends JFrame {
@@ -23,23 +31,13 @@ public class HomeUI extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HomeUI frame = new HomeUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public HomeUI() {
+		setBackground(java.awt.Color.WHITE);
+		
 		setResizable(false);
 		setTitle("School Mangement System");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,15 +45,22 @@ public class HomeUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(java.awt.Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		panel.setBackground(java.awt.Color.WHITE);
 		panel.setBounds(10, 59, 424, 202);
 		
 		contentPane.add(panel);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.print("Hello There\n");
+				try {
+					Client.client.sendToServer(new Message("UPDATE users SET Status = 1 WHERE ID="+Client.user.getID()+"/User: "+Client.user.getID(),QTypes.update));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnLogout.setBounds(391, 11, 30, 30);
@@ -71,4 +76,19 @@ public class HomeUI extends JFrame {
 		
 		contentPane.add(lblname);
 	}
+	public void logout(){
+		this.setVisible(false);
+		Client.clientGUI.dispose();
+		Client.clientGUI=new LoginUI();
+		try {
+			Client.client.closeConnection();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Client.user=null;
+		Client.clientGUI.setVisible(true);
+	}
+	
+
 }

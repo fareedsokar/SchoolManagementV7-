@@ -2,6 +2,9 @@ package server;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -49,50 +52,51 @@ public class ServerGUI extends JFrame {
 		setBounds(100, 100, 450, 450);
 		setTitle("Server - Side");
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(new MatteBorder(1, 1, 1, 1,Color.WHITE));
-		scrollPane.setBounds(60, 218, 300, 122);
+		scrollPane.setBounds(10, 116, 414, 284);
 		contentPane.add(scrollPane);
-		
-		serverConsole = new JTextArea();
-		scrollPane.setViewportView(serverConsole);
-		serverConsole.setEditable(false);
 		
 		lblDbName = new JLabel("DB Name:");
 		lblDbName.setFont(new Font("Calibri",Font.PLAIN, 16));
-		lblDbName.setBounds(60, 34, 120, 14);
+		lblDbName.setBounds(10, 11, 80, 14);
 		contentPane.add(lblDbName);
 		
 		textFieldDBName = new JTextField();
-		textFieldDBName.setForeground(new Color(139, 0, 0));
+		textFieldDBName.setForeground(Color.BLACK);
 		textFieldDBName.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 13));
-		textFieldDBName.setBounds(171, 34, 186, 20);
+		textFieldDBName.setBounds(85, 8, 125, 20);
 		contentPane.add(textFieldDBName);
 		textFieldDBName.setColumns(10);
 		
 		lblPort = new JLabel("Port:");
 		lblPort.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblPort.setBounds(60, 67, 64, 14);
+		lblPort.setBounds(10, 38, 64, 14);
 		contentPane.add(lblPort);
 		
 		textFieldPort = new JTextField();
+		textFieldPort.setText("5555");
 		textFieldPort.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 12));
-		textFieldPort.setForeground(new Color(165, 42, 42));
-		textFieldPort.setBounds(171, 67, 186, 20);
+		textFieldPort.setForeground(Color.BLACK);
+		textFieldPort.setBounds(85, 36, 125, 20);
 		contentPane.add(textFieldPort);
 		textFieldPort.setColumns(10);
 		
 		btnConnect = new JButton("Connect to DB");
 		btnConnect.setFont(new Font("Calibri", Font.PLAIN, 13));
-		btnConnect.setBounds(58, 184, 120, 23);
+		btnConnect.setBounds(85, 67, 125, 23);
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String dbname, portid , usrname , pass;
 					try{
 					
+							//Getting Current Date time
+						  	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+						  	LocalDateTime now = LocalDateTime.now();
 				            dbname = textFieldDBName.getText();
 				            portid = textFieldPort.getText();
 				            usrname = textFieldUser.getText();
@@ -102,14 +106,23 @@ public class ServerGUI extends JFrame {
 				            	if(server.initDBConnection(dbname,usrname, pass))
 				            	{
 				            		server.setPort(Integer.valueOf(textFieldPort.getText()));
-				            		display("SQL connection succeed");	
+				            		display("["+dtf.format(now)+"] SQL connection succeed");	
 				            		try{
 				            			server.listen(); //Start listening for connections
-				            			display("Server is listening on port " + textFieldPort.getText());
-				            			}catch(Exception ex){display("ERROR - Could not listen for clients!");}
+				            			display("["+dtf.format(now)+"] Server is listening on port " + textFieldPort.getText());
+				            			textFieldDBName.setForeground(Color.GREEN);
+				            			textFieldDBName.setEnabled(false);
+				            			textFieldPort.setForeground(Color.GREEN);
+				            			textFieldPort.setEnabled(false);
+				            			textFieldUser.setForeground(Color.GREEN);
+				            			textFieldUser.setEnabled(false);
+				            			textFieldPass.setForeground(Color.GREEN);
+				            			textFieldPass.setEnabled(false);
+				            			btnConnect.setEnabled(false);
+				            			}catch(Exception ex){display("["+dtf.format(now)+"] ERROR - Could not listen for clients!");}
 				            	}
 				        		else 
-				        			display("SQL connection failed.");
+				        			display("["+dtf.format(now)+"] SQL connection failed.");
 				            }
 				            else
 				            	display("You must Fill all the fields");
@@ -119,37 +132,39 @@ public class ServerGUI extends JFrame {
 		contentPane.add(btnConnect);
 		
 		textFieldUser = new JTextField();
-		textFieldUser.setForeground(new Color(165, 42, 42));
+		textFieldUser.setText("root");
+		textFieldUser.setForeground(Color.BLACK);
 		textFieldUser.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 13));
-		textFieldUser.setBounds(171, 98, 186, 20);
+		textFieldUser.setBounds(294, 8, 130, 20);
 		contentPane.add(textFieldUser);
 		textFieldUser.setColumns(10);
 		
 		lblUsername = new JLabel("Username:");
 		lblUsername.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblUsername.setBounds(60, 98, 101, 14);
+		lblUsername.setBounds(220, 11, 80, 14);
 		contentPane.add(lblUsername);
 		
 		lblPassword = new JLabel("Password:");
 		lblPassword.setFont(new Font("Calibri", Font.PLAIN, 16));
-		lblPassword.setBounds(60, 133, 101, 14);
+		lblPassword.setBounds(220, 38, 66, 14);
 		contentPane.add(lblPassword);
 		
 		textFieldPass = new JPasswordField();
-		textFieldPass.setForeground(new Color(165, 42, 42));
+		textFieldPass.setForeground(Color.BLACK);
 		textFieldPass.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 13));
-		textFieldPass.setBounds(171, 133, 186, 20);
+		textFieldPass.setBounds(294, 35, 130, 20);
 		contentPane.add(textFieldPass);
 		textFieldPass.setColumns(10);
 		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 11));
 		lblNewLabel.setForeground(new Color(165, 42, 42));
-		lblNewLabel.setBounds(0, 0, 400, 260);
+		lblNewLabel.setBounds(26, 101, 385, 20);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblIp = new JLabel("IP:");
-		lblIp.setBounds(59, 362, 24, 14);
+		lblIp.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblIp.setBounds(220, 69, 24, 14);
 		contentPane.add(lblIp);
 		
 		InetAddress ip;
@@ -157,8 +172,14 @@ public class ServerGUI extends JFrame {
 
 			ip = InetAddress.getLocalHost();
 			JLabel lblnumber = new JLabel(ip.getHostAddress());
-			lblnumber.setBounds(74, 362, 120, 14);
+			lblnumber.setFont(new Font("Tahoma", Font.BOLD, 16));
+			lblnumber.setBounds(264, 69, 120, 14);
 			contentPane.add(lblnumber);
+			
+			serverConsole = new JTextArea();
+			serverConsole.setBounds(10, 116, 414, 284);
+			contentPane.add(serverConsole);
+			serverConsole.setEditable(false);
 
 		  } catch (UnknownHostException e) {
 

@@ -8,9 +8,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import OurMessage.Message;
+import OurMessage.QTypes;
 import chat.Client;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
@@ -81,8 +83,26 @@ public class LoginUI extends JFrame {
 		
 		ActionListener task = new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	            login.setVisible(false);
+	        	Client.clientGUI.dispose();
+	        	//login.setVisible(false);
 	            Client.clientGUI = new HomeUI();
+	            ((HomeUI)Client.clientGUI).addWindowListener(new java.awt.event.WindowAdapter() {
+	                @Override
+	                public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+	                    if (JOptionPane.showConfirmDialog((HomeUI)Client.clientGUI, 
+	                        "Are you sure to close this window?", "Really Closing?", 
+	                        JOptionPane.YES_NO_OPTION,
+	                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+	                    	try {
+	        					Client.client.sendToServer(new Message("UPDATE users SET Status = 1 WHERE ID="+Client.user.getID()+"/User: "+Client.user.getID(),QTypes.updateonX));
+	                    	} catch (IOException e1) {
+	        					// TODO Auto-generated catch block
+	        					e1.printStackTrace();
+	        				}
+	                    	//Update Status
+	                    }
+	                }
+	            });
 	            Client.clientGUI.setVisible(true);
 	        }
 	        };
@@ -192,7 +212,7 @@ public class LoginUI extends JFrame {
 					}
 					else
 					{
-						Message msg = new Message("SELECT * FROM users WHERE id="+ getUsername()+" AND password="+getPassword()+";",Message.getuser);
+						Message msg = new Message("SELECT * FROM users WHERE id="+ getUsername()+" AND password="+getPassword()+";",QTypes.getuser);
 						Client.client.handleMessageFromClientUI(msg);
 					}
 				}

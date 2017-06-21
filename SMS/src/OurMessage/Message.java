@@ -15,13 +15,6 @@ public class Message implements Serializable {
 	 */
 	private String Query;
 	private int Qtype;
-	public static int insert = 1;
-	public static int select = 2; 
-	public static int display= 3;
-	public static int update = 4;
-	public static int getuser=5;
-	public static int secretaryStudents = 100;
-	public static int GetTeachunits = 200;
 	
 	public Message (String Q,int QT)
 	{
