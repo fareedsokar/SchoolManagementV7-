@@ -1,0 +1,23 @@
+package Secretary;
+
+import javax.swing.JPanel;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class SecretaryHomeUI extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public SecretaryHomeUI() {
+		setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 450, 21);
+		add(menuBar);
+		
+		JMenuItem mntmTask = new JMenuItem("task");
+		menuBar.add(mntmTask);
+
+	}
+}

@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -13,7 +14,7 @@ public class HomeUI extends JFrame {
 
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
-	private final JButton btnLogout = new JButton("Logout");
+	private final JButton btnLogout = new JButton(new ImageIcon("img\\homeui\\rsz_btnlogout.png"));
 	private final JLabel lblWelcome = new JLabel("Welcome:");
 	private final JLabel lblname = new JLabel("");
 
@@ -50,7 +51,7 @@ public class HomeUI extends JFrame {
 		panel.setBounds(10, 59, 424, 202);
 		
 		contentPane.add(panel);
-		btnLogout.setBounds(335, 11, 89, 23);
+		btnLogout.setBounds(391, 11, 30, 30);
 		
 		contentPane.add(btnLogout);
 		lblWelcome.setBounds(10, 15, 72, 14);
