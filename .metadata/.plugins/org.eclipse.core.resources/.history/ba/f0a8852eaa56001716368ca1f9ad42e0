@@ -9,8 +9,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class HomeUI extends JFrame {
 
@@ -53,16 +51,8 @@ public class HomeUI extends JFrame {
 		panel.setBounds(10, 59, 424, 202);
 		
 		contentPane.add(panel);
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.print("Hello There\n");
-			}
-		});
 		btnLogout.setBounds(391, 11, 30, 30);
 		
-		btnLogout.setOpaque(false);
-		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBorderPainted(false);
 		contentPane.add(btnLogout);
 		lblWelcome.setBounds(10, 15, 72, 14);
 		
