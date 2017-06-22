@@ -117,14 +117,7 @@ public class LoginUI extends JFrame {
 					break;
 				}
 	        	
-	        	 ((HomeUI)Client.clientGUI).setBounds(((HomeUI)Client.clientGUI).getX()
-		            		,((HomeUI)Client.clientGUI).getY()
-		            		,((HomeUI)Client.clientGUI).getWidth()
-		            		,((HomeUI)Client.clientGUI).innerpanel.getHeight()
-		            		+((HomeUI)Client.clientGUI).innerpanel.getY()+40);
-		            ((HomeUI)Client.clientGUI).setResizable(false);
-	            ((HomeUI)Client.clientGUI).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	            Client.clientGUI.setVisible(true);
+	        	((HomeUI)Client.clientGUI).resizeHome();
 	        }
 	        };
 				

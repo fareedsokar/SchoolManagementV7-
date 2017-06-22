@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import OurMessage.Message;
 import OurMessage.QTypes;
 import chat.Client;
+import sysAdmin.sysAdminHomeUI;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -71,6 +72,15 @@ public class HomeUI extends JFrame {
 		lblWelcome.setBounds(10, 15, 222, 14);
 		lblWelcome.setText(lblWelcome.getText()+" "+Client.user.getName());
 		contentPane.add(lblWelcome);
+		btnchangepass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				((HomeUI)Client.clientGUI).contentPane.remove(((HomeUI)Client.clientGUI).innerpanel);
+				((HomeUI)Client.clientGUI).innerpanel=new ChangePassUI();
+				((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
+				(Client.clientGUI).setVisible(true);
+				((HomeUI)Client.clientGUI).resizeHome();
+			}
+		});
 		
 		
 		btnchangepass.setOpaque(false);
@@ -78,6 +88,10 @@ public class HomeUI extends JFrame {
 		btnchangepass.setBorderPainted(false);
 		btnchangepass.setBounds(358, 11, 30, 30);
 		contentPane.add(btnchangepass);
+		btngetinfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		
 		btngetinfo.setOpaque(false);
@@ -107,5 +121,15 @@ public class HomeUI extends JFrame {
 		}
 		Client.user=null;
 		Client.clientGUI.setVisible(true);
+	}
+	public void resizeHome(){
+		((HomeUI)Client.clientGUI).setBounds(((HomeUI)Client.clientGUI).getX()
+        		,((HomeUI)Client.clientGUI).getY()
+        		,((HomeUI)Client.clientGUI).getWidth()
+        		,((HomeUI)Client.clientGUI).innerpanel.getHeight()
+        		+((HomeUI)Client.clientGUI).innerpanel.getY()+40);
+        ((HomeUI)Client.clientGUI).setResizable(false);
+    ((HomeUI)Client.clientGUI).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    Client.clientGUI.setVisible(true);
 	}
 }

@@ -1,0 +1,14 @@
+package User;
+
+import javax.swing.JPanel;
+
+public class ChangePassUI extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public ChangePassUI() {
+
+	}
+
+}
