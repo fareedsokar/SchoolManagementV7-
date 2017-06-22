@@ -77,7 +77,7 @@ public class HomeUI extends JFrame {
 				((HomeUI)Client.clientGUI).contentPane.remove(((HomeUI)Client.clientGUI).innerpanel);
 				((HomeUI)Client.clientGUI).innerpanel=new ChangePassUI();
 				((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
-				(Client.clientGUI).setVisible(true);
+				//(Client.clientGUI).setVisible(true);
 				((HomeUI)Client.clientGUI).resizeHome();
 			}
 		});

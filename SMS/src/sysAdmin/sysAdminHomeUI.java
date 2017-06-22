@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class sysAdminHomeUI extends JPanel {
 
@@ -27,6 +28,7 @@ public class sysAdminHomeUI extends JPanel {
 		
 		
 		JButton btnAddCourse = new JButton("Add Course");
+		btnAddCourse.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		btnAddCourse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -34,11 +36,10 @@ public class sysAdminHomeUI extends JPanel {
 				((HomeUI)Client.clientGUI).contentPane.remove(((HomeUI)Client.clientGUI).innerpanel);
 				((HomeUI)Client.clientGUI).innerpanel = new AddCourseUI();
 				((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
-				((HomeUI)Client.clientGUI).revalidate();
-				((HomeUI)Client.clientGUI).repaint();
+				((HomeUI)Client.clientGUI).resizeHome();
 			}
 		});
-		btnAddCourse.setBounds(61, 123, 89, 23);
+		btnAddCourse.setBounds(54, 123, 100, 23);
 		add(btnAddCourse);
 
 	}
