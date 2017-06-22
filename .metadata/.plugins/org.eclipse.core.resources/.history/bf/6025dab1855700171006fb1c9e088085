@@ -1,0 +1,36 @@
+package Secretary;
+
+import javax.swing.JPanel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+public class CreatingSemesterUI extends JPanel {
+	private JPanel panel;
+	private JButton button = new JButton(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Arrow-reload-3-icon.png"));
+	private JLabel lblCheckIfCurrent;
+
+	/**
+	 * Create the panel.
+	 */
+	public CreatingSemesterUI() {
+		setLayout(null);
+		setBounds(10, 59, 424, 300);
+		panel = new JPanel();
+		panel.setBounds(10, 47, 404, 242);
+		add(panel);
+		
+		
+		//JLabel lblicon=new JLabel("Check Semester!");
+		//lblicon.setIcon(new ImageIcon("img\\homeui\\resetpassword.png"));
+		//button = new JButton("Hello!");//(Icon) lblicon);
+		button.setBounds(239, 13, 48, 48);
+		add(button);
+		
+		lblCheckIfCurrent = new JLabel("Check if current semester duration had expired!");
+		lblCheckIfCurrent.setBounds(10, 17, 230, 14);
+		add(lblCheckIfCurrent);
+
+	}
+}

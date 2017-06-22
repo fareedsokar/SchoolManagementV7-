@@ -5,6 +5,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.Date;
 
 import ocsf.server.*;
 
@@ -130,6 +131,40 @@ public class Server extends AbstractServer {
 			  case 6:
 				  stmt.executeUpdate(((Message)msg).GetQuery());
 				  serv.display("["+dtf.format(now)+"] User: "+client.getInfo("name")+" has been disconnected!" );
+				  break;
+				  
+				  
+				  
+				  
+			 //SECRETARY CASES
+			  case 101:
+				  rs=stmt.executeQuery(((Message)msg).GetQuery());
+				  if (rs.next()) {
+					  Date dt=rs.getDate(3);
+					  Date today=new Date();
+					  if(dt.before(today)){
+						  try {
+							client.sendToClient(new Request(true,QTypes.checksemester));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					  }else{
+						  try {
+							client.sendToClient(new Request(false,QTypes.checksemester));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					  }
+				  }else{//didn't get any Semesters
+					  try {
+							client.sendToClient(new Request(true,QTypes.checksemester));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				  }
 				  break;
 			  }
 			  

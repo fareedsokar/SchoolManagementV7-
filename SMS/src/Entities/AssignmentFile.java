@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Date;
+
 public class AssignmentFile extends File {
 		private int AssignmentNumber;
 		private Date FinalDate;
