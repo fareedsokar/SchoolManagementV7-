@@ -11,7 +11,6 @@ import ocsf.server.*;
 
 import OurMessage.*;
 import Entities.AccessProfiles;
-import Entities.Semester;
 import Entities.User;
 public class Server extends AbstractServer {
 	//Class variables ***************************************************
@@ -140,26 +139,22 @@ public class Server extends AbstractServer {
 			 //SECRETARY CASES
 			  case 101:
 				  rs=stmt.executeQuery(((Message)msg).GetQuery());
-				  
 				  if (rs.next()) {
-					  serv.display("["+dtf.format(now)+"] Checking Semester_ID="+rs.getInt(1)+" duration!");
 					  Date dt=rs.getDate(3);
 					  Date today=new Date();
 					  if(dt.before(today)){
 						  try {
-							  Semester sm=new Semester(rs.getDate(2),dt,rs.getString(4),rs.getInt(1));
-							client.sendToClient(new Request(sm,QTypes.checksemester));
-							
+							client.sendToClient(new Request(true,QTypes.checksemester));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
-							serv.display("["+dtf.format(now)+"] Error Sending back to Client!");
+							e.printStackTrace();
 						}
 					  }else{
 						  try {
 							client.sendToClient(new Request(false,QTypes.checksemester));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
-							serv.display("["+dtf.format(now)+"] Error Sending back to Client!");
+							e.printStackTrace();
 						}
 					  }
 				  }else{//didn't get any Semesters
@@ -167,7 +162,7 @@ public class Server extends AbstractServer {
 							client.sendToClient(new Request(true,QTypes.checksemester));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
-							serv.display("["+dtf.format(now)+"] Error Sending back to Client!");
+							e.printStackTrace();
 						}
 				  }
 				  break;
