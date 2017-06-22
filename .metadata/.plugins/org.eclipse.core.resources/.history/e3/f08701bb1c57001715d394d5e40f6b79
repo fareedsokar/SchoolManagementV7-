@@ -86,7 +86,7 @@ public class LoginUI extends JFrame {
 	        	Client.clientGUI.dispose();
 	        	//login.setVisible(false);
 	            Client.clientGUI = new HomeUI();
-	            ((HomeUI)Client.clientGUI).setResizable(true);
+	            
 	        	switch(access){
 				case 1://System.out.println("Welcome Back Student");
 					
@@ -102,10 +102,8 @@ public class LoginUI extends JFrame {
 					break;
 				case 5://System.out.println("Welcome Back Secretary");
 					((HomeUI)Client.clientGUI).innerpanel=new SecretaryHomeUI();
-					
-					//((HomeUI)Client.clientGUI).innerpanel.setBounds(r);
+					((HomeUI)Client.clientGUI).innerpanel.setBounds(r);
 		            ((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
-		           
 					break;
 				case 6://System.out.println("Welcome Back Parent");
 
@@ -115,12 +113,7 @@ public class LoginUI extends JFrame {
 					break;
 				}
 	        	
-	        	 ((HomeUI)Client.clientGUI).setBounds(((HomeUI)Client.clientGUI).getX()
-		            		,((HomeUI)Client.clientGUI).getY()
-		            		,((HomeUI)Client.clientGUI).getWidth()
-		            		,((HomeUI)Client.clientGUI).innerpanel.getHeight()
-		            		+((HomeUI)Client.clientGUI).innerpanel.getY()+50);
-		            ((HomeUI)Client.clientGUI).setResizable(false);
+	            
 	            ((HomeUI)Client.clientGUI).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	            Client.clientGUI.setVisible(true);
 	        }

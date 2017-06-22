@@ -92,7 +92,7 @@ public class HomeUI extends JFrame {
 		contentPane.add(lblid);
 		
 		
-		//innerpanel.setBounds(0, 60, 444, 211);
+		innerpanel.setBounds(0, 60, 444, 211);
 		
 	}
 	public void logout(){

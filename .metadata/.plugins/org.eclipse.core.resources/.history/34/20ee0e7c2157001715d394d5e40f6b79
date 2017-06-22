@@ -113,7 +113,7 @@ public class Client extends AbstractClient {
 			{ 
 				User us=(User)(((Request)msg).getRequest());
 				this.user=us;
-				((LoginUI)clientGUI).loginsuccess(us.getAccess().getAccess());//Treat Login Case in loginsuccess function
+				((LoginUI)clientGUI).loginsuccess(us.getAccess().getAccess());
 				//clientGUI.setVisible(false);
 				System.out.println("I am here Request User");
 				
