@@ -1,8 +1,3 @@
-/Entities/
-/OurMessage/
-/Secretary/
+/common/
 /User/
-/chat/
-/ocsf/
-/server/
-/sysAdmin/
+/Secretary/
