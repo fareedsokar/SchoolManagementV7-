@@ -11,6 +11,7 @@ import OurMessage.Message;
 import OurMessage.QTypes;
 import Secretary.SecretaryHomeUI;
 import chat.Client;
+import sysAdmin.sysAdminHomeUI;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -95,7 +96,8 @@ public class LoginUI extends JFrame {
 
 					break;
 				case 3://System.out.println("Welcome Back System Admin");
-					
+					((HomeUI)Client.clientGUI).innerpanel=new sysAdminHomeUI();
+					((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
 					break;
 				case 4://System.out.println("Welcome Back School Admin");
 					
