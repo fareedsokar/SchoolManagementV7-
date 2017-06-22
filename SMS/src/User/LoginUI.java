@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import OurMessage.Message;
 import OurMessage.QTypes;
+import Secretary.SecretaryHomeUI;
 import chat.Client;
 
 import javax.swing.JLabel;
@@ -77,32 +78,42 @@ public class LoginUI extends JFrame {
 		lblerr.setText(S);
 	}
 	
-	public void loginsuccess(){
+	public void loginsuccess(int access){
 		lblerr.setForeground(Color.green);
-		setstatus("Your Account has Been successfully login");
-		
+		setstatus("Your Account has Been successfully login\nRedirect in 1 sec...");
 		ActionListener task = new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	Client.clientGUI.dispose();
 	        	//login.setVisible(false);
 	            Client.clientGUI = new HomeUI();
-	            ((HomeUI)Client.clientGUI).addWindowListener(new java.awt.event.WindowAdapter() {
-	                @Override
-	                public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-	                    if (JOptionPane.showConfirmDialog((HomeUI)Client.clientGUI, 
-	                        "Are you sure to close this window?", "Really Closing?", 
-	                        JOptionPane.YES_NO_OPTION,
-	                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-	                    	try {
-	        					Client.client.sendToServer(new Message("UPDATE users SET Status = 1 WHERE ID="+Client.user.getID()+"/User: "+Client.user.getID(),QTypes.updateonX));
-	                    	} catch (IOException e1) {
-	        					// TODO Auto-generated catch block
-	        					e1.printStackTrace();
-	        				}
-	                    	//Update Status
-	                    }
-	                }
-	            });
+	            
+	        	switch(access){
+				case 1://System.out.println("Welcome Back Student");
+					
+					break;
+				case 2://System.out.println("Welcome Back Teacher");
+
+					break;
+				case 3://System.out.println("Welcome Back System Admin");
+					
+					break;
+				case 4://System.out.println("Welcome Back School Admin");
+					
+					break;
+				case 5://System.out.println("Welcome Back Secretary");
+					((HomeUI)Client.clientGUI).innerpanel=new SecretaryHomeUI();
+		            ((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
+					break;
+				case 6://System.out.println("Welcome Back Parent");
+
+					break;
+				case 7://System.out.println("Welcome Back Guest");
+
+					break;
+				}
+	        	
+	            
+	            ((HomeUI)Client.clientGUI).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	            Client.clientGUI.setVisible(true);
 	        }
 	        };

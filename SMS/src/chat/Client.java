@@ -7,11 +7,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import ocsf.client.AbstractClient;
 
 import Entities.User;
 import OurMessage.*;
+import Secretary.SecretaryHomeUI;
 import User.HomeUI;
 import User.LoginUI;
 //import common.Sys;
@@ -109,68 +111,16 @@ public class Client extends AbstractClient {
 			}
 			if(((Request)msg).getRequest() instanceof User)
 			{ 
-				((LoginUI)clientGUI).loginsuccess();
-				//clientGUI.setVisible(false);
-				System.out.println("I am here Request User");
 				User us=(User)(((Request)msg).getRequest());
 				this.user=us;
-				switch(us.getAccess().getAccess()){
-				case 1:
-					System.out.println("Welcome Back Student");
-
-					break;
-				case 2:
-					System.out.println("Welcome Back Teacher");
-
-					break;
-				case 3:
-					
-					//clientGUI.setVisible(false);
-					System.out.println("Welcome Back System Admin");
-					break;
-				case 4:
-					//clientGUI.setVisible(false);
-					System.out.println("Welcome Back School Admin");
-					break;
-				case 5:
-					
-					System.out.println("Welcome Back Secretary");
-
-					break;
-				case 6:
-					System.out.println("Welcome Back Parent");
-
-					break;
-				case 7:
-					System.out.println("Welcome Back Guest");
-
-					break;
-				}
+				((LoginUI)clientGUI).loginsuccess(us.getAccess().getAccess());
+				//clientGUI.setVisible(false);
+				System.out.println("I am here Request User");
+				
+				
 			}
 			break;
 		}
-		/*String[] chat = ((String) msg).split(" ");
-		sender = chat[0];
-		String type = chat[1];
-		for (int i = 2; i < chat.length; i++) {
-			message += chat[i] + " ";
-		}
-		for (ChatController chatUI : allChats) {
-			if (sender.equals(chatUI.getFriend())) {
-				if (type.equals("message")) {
-					chatUI.display(oldmessage + sender + ": " + message + "\n");
-					message = "";
-				} else if (type.equals("offline")) {
-					chatUI.display(sender + " " + message + "\n");
-					message = "";
-				}
-			}
-		}
-		if (!message.isEmpty()) {
-			oldmessage = oldmessage + sender + ": " + message + "\n";
-			message = "";
-		}
-		*/
 	}
 	
     /**

@@ -19,14 +19,17 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.Icon;
 
 public class HomeUI extends JFrame {
 
-	private JPanel contentPane;
-	private final JPanel panel = new JPanel();
+	public JPanel innerpanel = new JPanel();
+	public JPanel contentPane;
 	private final JButton btnLogout = new JButton(new ImageIcon("img\\homeui\\rsz_btnlogout.png"));
+	private final JButton btnchangepass = new JButton(new ImageIcon("img\\homeui\\resetpassword.png"));
+	private final JButton btngetinfo = new JButton(new ImageIcon("img\\homeui\\information.png"));
 	private final JLabel lblWelcome = new JLabel("Welcome:");
-	private final JLabel lblname = new JLabel("");
+	private final JLabel lblid = new JLabel("ID: ");
 
 	/**
 	 * Launch the application.
@@ -40,19 +43,15 @@ public class HomeUI extends JFrame {
 		
 		setResizable(false);
 		setTitle("School Mangement System");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 367, 388);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(java.awt.Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		panel.setBackground(java.awt.Color.WHITE);
-		panel.setBounds(10, 59, 424, 202);
-		
-		contentPane.add(panel);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -69,12 +68,32 @@ public class HomeUI extends JFrame {
 		btnLogout.setContentAreaFilled(false);
 		btnLogout.setBorderPainted(false);
 		contentPane.add(btnLogout);
-		lblWelcome.setBounds(10, 15, 72, 14);
-		
+		lblWelcome.setBounds(10, 15, 222, 14);
+		lblWelcome.setText(lblWelcome.getText()+" "+Client.user.getName());
 		contentPane.add(lblWelcome);
-		lblname.setBounds(10, 29, 46, 14);
 		
-		contentPane.add(lblname);
+		
+		btnchangepass.setOpaque(false);
+		btnchangepass.setContentAreaFilled(false);
+		btnchangepass.setBorderPainted(false);
+		btnchangepass.setBounds(358, 11, 30, 30);
+		contentPane.add(btnchangepass);
+		
+		
+		btngetinfo.setOpaque(false);
+		btngetinfo.setContentAreaFilled(false);
+		btngetinfo.setBorderPainted(false);
+		btngetinfo.setBounds(318, 11, 30, 30);
+		contentPane.add(btngetinfo);
+		
+		
+		lblid.setBounds(10, 34, 165, 14);
+		lblid.setText(lblid.getText()+" "+Client.user.getID());
+		contentPane.add(lblid);
+		
+		
+		innerpanel.setBounds(0, 60, 444, 211);
+		
 	}
 	public void logout(){
 		this.setVisible(false);
@@ -89,6 +108,4 @@ public class HomeUI extends JFrame {
 		Client.user=null;
 		Client.clientGUI.setVisible(true);
 	}
-	
-
 }
