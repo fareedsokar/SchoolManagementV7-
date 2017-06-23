@@ -7,8 +7,11 @@
 <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
 <fullyQualifiedTypeName name="chat.Client"/>
 <fullyQualifiedTypeName name="OurMessage.Type"/>
-<fullyQualifiedTypeName name="OurMessage.QTypes"/>
 <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
 <fullyQualifiedTypeName name="com.sun.glass.events.WindowEvent"/>
 <fullyQualifiedTypeName name="javax.swing.WindowConstants"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="OurMessage.QTypes"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="Entities.Semester"/>
 </qualifiedTypeNameHistroy>

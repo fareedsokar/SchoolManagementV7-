@@ -48,6 +48,7 @@ public class ServerGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ServerGUI() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
 		setTitle("Server - Side");

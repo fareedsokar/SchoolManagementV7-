@@ -5,11 +5,13 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.Date;
 
 import ocsf.server.*;
 
 import OurMessage.*;
 import Entities.AccessProfiles;
+import Entities.Semester;
 import Entities.User;
 public class Server extends AbstractServer {
 	//Class variables ***************************************************
@@ -130,6 +132,44 @@ public class Server extends AbstractServer {
 			  case 6:
 				  stmt.executeUpdate(((Message)msg).GetQuery());
 				  serv.display("["+dtf.format(now)+"] User: "+client.getInfo("name")+" has been disconnected!" );
+				  break;
+				  
+				  
+				  
+				  
+			 //SECRETARY CASES
+			  case 101:
+				  rs=stmt.executeQuery(((Message)msg).GetQuery());
+				  
+				  if (rs.next()) {
+					  serv.display("["+dtf.format(now)+"] Checking Semester_ID="+rs.getInt(1)+" duration!");
+					  Date dt=rs.getDate(3);
+					  Date today=new Date();
+					  if(dt.before(today)){
+						  try {
+							  Semester sm=new Semester(rs.getDate(2),dt,rs.getString(4),rs.getInt(1));
+							client.sendToClient(new Request(sm,QTypes.checksemester));
+							
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							serv.display("["+dtf.format(now)+"] Error Sending back to Client!");
+						}
+					  }else{
+						  try {
+							client.sendToClient(new Request(false,QTypes.checksemester));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							serv.display("["+dtf.format(now)+"] Error Sending back to Client!");
+						}
+					  }
+				  }else{//didn't get any Semesters
+					  try {
+							client.sendToClient(new Request(true,QTypes.checksemester));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							serv.display("["+dtf.format(now)+"] Error Sending back to Client!");
+						}
+				  }
 				  break;
 			  }
 			  

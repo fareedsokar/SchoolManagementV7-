@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import OurMessage.Message;
 import OurMessage.QTypes;
+import Secretary.CreatingSemesterUI;
 import chat.Client;
 import sysAdmin.sysAdminHomeUI;
 
@@ -122,6 +123,12 @@ public class HomeUI extends JFrame {
 		}
 		Client.user=null;
 		Client.clientGUI.setVisible(true);
+	}
+	public void ChangeJPanel(JPanel panel){
+		((HomeUI)Client.clientGUI).contentPane.remove(((HomeUI)Client.clientGUI).innerpanel);
+		((HomeUI)Client.clientGUI).innerpanel=panel;
+		((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
+		((HomeUI)Client.clientGUI).resizeHome();
 	}
 	public void resizeHome(){
 		int myY=0;

@@ -1,14 +1,15 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Semester implements Serializable {
 	private Date startDate;
 	private Date endDate;
-	private char semesterLetter;
+	private String semesterLetter;
 	private int semester_id;
 	
-	public Semester(Date startDate,Date endDate,char semesterLetter,int semester_id)
+	public Semester(Date startDate,Date endDate,String semesterLetter,int semester_id)
 	{
 		setEndDate(endDate);
 		setStartDate(startDate);
@@ -28,10 +29,10 @@ public class Semester implements Serializable {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public char getSemesterLetter() {
+	public String getSemesterLetter() {
 		return semesterLetter;
 	}
-	public void setSemesterLetter(char semesterLetter) {
+	public void setSemesterLetter(String semesterLetter) {
 		this.semesterLetter = semesterLetter;
 	}
 	public int getSemester_id() {

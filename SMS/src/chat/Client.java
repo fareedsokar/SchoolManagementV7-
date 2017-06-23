@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import ocsf.client.AbstractClient;
-
+import Entities.Semester;
 import Entities.User;
 import OurMessage.*;
 import Secretary.SecretaryHomeUI;
@@ -118,6 +118,19 @@ public class Client extends AbstractClient {
 				System.out.println("I am here Request User");
 				
 				
+			}
+			break;
+		case 101:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if((Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+				}else{
+					//Semester is still on
+				}
+			}
+			if(((Request)msg).getRequest() instanceof Semester){
+				//semester expired
 			}
 			break;
 		}

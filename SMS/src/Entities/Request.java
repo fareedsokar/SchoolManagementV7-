@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Date;
+
 public class Request extends Messages{
 	
 	private boolean Accepted;//True if been Approved False otherwise
