@@ -42,13 +42,14 @@ public class HomeUI extends JFrame {
 	public HomeUI() {
 		setBackground(java.awt.Color.WHITE);
 		
-		setResizable(false);
+		//setResizable(false);
 		setTitle("School Mangement System");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 367, 388);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		//contentPane.setBounds(0, 40, 300, height);
 		contentPane.setBackground(java.awt.Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -123,11 +124,31 @@ public class HomeUI extends JFrame {
 		Client.clientGUI.setVisible(true);
 	}
 	public void resizeHome(){
+		int myY=0;
+		int myX=0;
+		int myplus = 0;
+		//System.out.print( ((HomeUI)Client.clientGUI).getWidth() + " " + ((HomeUI)Client.clientGUI).innerpanel.getWidth()+ " 1\n");
+		if(((HomeUI)Client.clientGUI).getWidth() >= ((HomeUI)Client.clientGUI).innerpanel.getWidth())
+			myY = ((HomeUI)Client.clientGUI).getWidth();
+		else
+		{
+			myY = ((HomeUI)Client.clientGUI).innerpanel.getWidth();
+			myplus = ((HomeUI)Client.clientGUI).innerpanel.getWidth() - ((HomeUI)Client.clientGUI).getWidth();
+		}
+	/*	if(((HomeUI)Client.clientGUI).getHeight() >= ((HomeUI)Client.clientGUI).innerpanel.getHeight())
+			myX = ((HomeUI)Client.clientGUI).getHeight();
+		else
+			myX = ((HomeUI)Client.clientGUI).innerpanel.getHeight();*/
+		
+		btnLogout.setBounds(btnLogout.getX() + myplus, 11, 30, 30);
+		btnchangepass.setBounds(btnchangepass.getX() + myplus, 11, 30, 30);
+		btngetinfo.setBounds(btngetinfo.getX() + myplus, 11, 30, 30);
 		((HomeUI)Client.clientGUI).setBounds(((HomeUI)Client.clientGUI).getX()
         		,((HomeUI)Client.clientGUI).getY()
-        		,((HomeUI)Client.clientGUI).getWidth()
-        		,((HomeUI)Client.clientGUI).innerpanel.getHeight()
-        		+((HomeUI)Client.clientGUI).innerpanel.getY()+40);
+        		,(myY+5)
+        		,(((HomeUI)Client.clientGUI).innerpanel.getHeight()
+        		+((HomeUI)Client.clientGUI).innerpanel.getY()+27));
+		//((HomeUI)Client.clientGUI).btnLogout.setBounds(btnLogout.getBounds().x + , 11, width, height);
         ((HomeUI)Client.clientGUI).setResizable(false);
     ((HomeUI)Client.clientGUI).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     Client.clientGUI.setVisible(true);

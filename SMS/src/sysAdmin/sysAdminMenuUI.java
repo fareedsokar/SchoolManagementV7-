@@ -56,6 +56,7 @@ public class sysAdminMenuUI {
     tree.putClientProperty("Nimbus.Overrides.InheritDefaults", false);
     JScrollPane jsp = new JScrollPane(tree);
     jsp.setBorder(null);
+    jsp.setForeground(SystemColor.activeCaption);
     //jsp.setViewportBorder(null);
     //unistallBorder(jsco);
     

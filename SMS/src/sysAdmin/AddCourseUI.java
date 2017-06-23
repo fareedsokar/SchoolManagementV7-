@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import java.awt.Choice;
+import java.awt.Color;
 
 public class AddCourseUI extends JPanel {
 	private JTextField txtcourseid;
@@ -24,55 +25,60 @@ public class AddCourseUI extends JPanel {
 	 */
 	public AddCourseUI() {
 		
-		setBackground(SystemColor.activeCaption);
-		setBounds(10, 59, 302, 301);
+		setBackground(Color.WHITE);
+		setBounds(10, 59, 500, 350);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Course id :");
-		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		lblNewLabel.setBounds(45, 31, 67, 20);
+		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblNewLabel.setBounds(46, 31, 75, 20);
 		add(lblNewLabel);
 		
 		txtcourseid = new JTextField();
+		txtcourseid.setBackground(Color.LIGHT_GRAY);
 		txtcourseid.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		txtcourseid.setBounds(110, 31, 118, 20);
+		txtcourseid.setBounds(120, 32, 118, 20);
 		add(txtcourseid);
 		txtcourseid.setColumns(10);
 		
 		JLabel lblName = new JLabel("Name :");
-		lblName.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		lblName.setBounds(66, 63, 46, 18);
+		lblName.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblName.setBounds(70, 65, 51, 18);
 		add(lblName);
 		
 		txtcoursename = new JTextField();
+		txtcoursename.setBackground(Color.LIGHT_GRAY);
 		txtcoursename.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		txtcoursename.setColumns(10);
-		txtcoursename.setBounds(110, 62, 118, 20);
+		txtcoursename.setBounds(120, 65, 118, 20);
 		add(txtcoursename);
 		
 		JLabel lblTeachingUnit = new JLabel("Teaching Unit :");
-		lblTeachingUnit.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		lblTeachingUnit.setBounds(20, 92, 92, 20);
+		lblTeachingUnit.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblTeachingUnit.setBounds(19, 92, 102, 20);
 		add(lblTeachingUnit);
 		
 		txtteachunit = new JTextField();
+		txtteachunit.setBackground(Color.LIGHT_GRAY);
 		txtteachunit.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		txtteachunit.setColumns(10);
-		txtteachunit.setBounds(110, 92, 118, 20);
+		txtteachunit.setBounds(120, 93, 118, 20);
 		add(txtteachunit);
 		
 		lblLearnHours = new JLabel("Learn Hours :");
-		lblLearnHours.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		lblLearnHours.setBounds(30, 123, 82, 20);
+		lblLearnHours.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblLearnHours.setBounds(28, 122, 93, 20);
 		add(lblLearnHours);
 		
 		txtlearnhours = new JTextField();
+		txtlearnhours.setBackground(Color.LIGHT_GRAY);
 		txtlearnhours.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		txtlearnhours.setColumns(10);
-		txtlearnhours.setBounds(110, 123, 118, 20);
+		txtlearnhours.setBounds(120, 123, 118, 20);
 		add(txtlearnhours);
 		
 		list = new JList();
+		list.setBackground(Color.LIGHT_GRAY);
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] {};
 			public int getSize() {
@@ -86,8 +92,8 @@ public class AddCourseUI extends JPanel {
 		add(list);
 		
 		lblPrecourses = new JLabel("Pre-Courses :");
-		lblPrecourses.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		lblPrecourses.setBounds(30, 154, 82, 20);
+		lblPrecourses.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		lblPrecourses.setBounds(19, 154, 93, 20);
 		add(lblPrecourses);
 
 	}
