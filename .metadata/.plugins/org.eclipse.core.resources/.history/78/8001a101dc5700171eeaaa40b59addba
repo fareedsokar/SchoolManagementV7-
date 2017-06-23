@@ -19,8 +19,6 @@ public class CreatingSemesterUI extends JPanel {
 	private JButton btncheck = new JButton(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Arrow-reload-3-icon.png"));
 	private JLabel imgstart = new JLabel(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Picture1.png"));
 	private JLabel lblCheckIfCurrent;
-	private JLabel imgend= new JLabel(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Picture2.png"));
-	private JLabel imgabs= new JLabel(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Abs-icon.png"));
 
 	/**
 	 * Create the panel.
@@ -55,14 +53,6 @@ public class CreatingSemesterUI extends JPanel {
 
 		imgstart.setBounds(88, 37, 30, 30);
 		panel.add(imgstart);
-		
-		
-		imgend.setBounds(88, 82, 30, 30);
-		panel.add(imgend);
-		
-		
-		imgabs.setBounds(88, 123, 30, 30);
-		panel.add(imgabs);
 		
 		
 	}
