@@ -5,19 +5,29 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import User.HomeUI;
+import chat.Client;
+
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ViewReportGui extends JPanel {
 	private JTextField textField;
-
+	//JLabel newpanlbl=new JLabel();
+     JPanel newpan=new JPanel();
 	/**
 	 * Create the panel.
 	 */
 	public ViewReportGui() {
 		setBounds(135, 0, 289, 300);
 		setLayout(null);
-		
+		newpan.setBounds(135, 0, 289, 300);
+			
+			
+	
 		JLabel lblReport = new JLabel("Report :");
 		lblReport.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblReport.setForeground(Color.BLACK);
@@ -42,6 +52,13 @@ public class ViewReportGui extends JPanel {
 		add(btnBack);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel);
+				((HomeUI)Client.clientGUI).resizeHome();
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=newpan;
+			}
+		});
 		btnCancel.setBounds(132, 245, 89, 29);
 		add(btnCancel);
 

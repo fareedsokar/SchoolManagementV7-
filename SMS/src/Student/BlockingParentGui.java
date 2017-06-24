@@ -82,7 +82,9 @@ private int month;
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel);
+				((HomeUI)Client.clientGUI).resizeHome();
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=newpan;  
 			}
 		});
 		

@@ -1,20 +1,27 @@
 package Student;
 
 import javax.swing.JPanel;
+
+import User.HomeUI;
+import chat.Client;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ViewMaterialsGui extends JPanel {
 
+	JPanel newpan=new JPanel(); 
 	/**
 	 * Create the panel.
 	 */
 	public ViewMaterialsGui() {
 		setBounds(135, 0, 289, 300);
 		setLayout(null);
-		
+		newpan.setBounds(135, 0, 289, 300);
 		JLabel lblMaterialsPerCourse = new JLabel(" Materials per Course :");
 		lblMaterialsPerCourse.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblMaterialsPerCourse.setBounds(10, 11, 138, 33);
@@ -41,6 +48,13 @@ public class ViewMaterialsGui extends JPanel {
 		add(btnView);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel);
+				((HomeUI)Client.clientGUI).resizeHome();
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=newpan;
+			}
+		});
 		btnCancel.setBounds(130, 246, 89, 23);
 		add(btnCancel);
 
