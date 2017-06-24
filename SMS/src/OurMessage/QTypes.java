@@ -13,4 +13,5 @@ public class QTypes {
 	public static int secretaryStudents = 100;
 	public static int checksemester=101;//check semester duration
 	public static int GetTeachunits = 200;
+	public static int blockparent=300; 
 }

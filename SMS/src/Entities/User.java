@@ -8,7 +8,7 @@ public class User implements Serializable {
 	private String Name;
 	private String Password;
 	private String Email;
-	private int Status;
+	private int Status; // 2 if it was blocked (parent blocking)
 	private AccessProfiles Access;
 	//Constructor
 	
