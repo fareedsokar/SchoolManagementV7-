@@ -140,6 +140,7 @@ public class Client extends AbstractClient {
 				
 				((CreatingSemesterUI)((HomeUI)clientGUI).innerpanel).setSemester(
 						((Semester)msg).getSemester_id(), ((Semester)msg).getSemesterLetter());
+				
 			}
 			break;
 			
