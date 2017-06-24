@@ -9,6 +9,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.tree.TreePath;
 
+import OurMessage.Message;
+import OurMessage.QTypes;
 import User.HomeUI;
 import chat.Client;
 
@@ -43,7 +45,7 @@ public class sysAdminHomeUI extends JPanel {
 	sysAdminMenuUI mytree = new sysAdminMenuUI();
 	public JPanel innerpanel = new JPanel();
 	public JPanel contentPane;
-	private Boolean pressed = false;
+	public Boolean pressed = false;
 	
 	
 	public sysAdminHomeUI() {
@@ -73,16 +75,20 @@ public class sysAdminHomeUI extends JPanel {
 		    		    if(tp != null)
 		    		    {
 		    		    	String s = tp.getLastPathComponent().toString();
-		    		    	if(s.equals("Add New Course") && (pressed == false))
+		    		    	if(pressed == false)
 		    		    	{
-		    		    		pressed = true;
-		    		    		contentPane.remove(innerpanel);
-		    		    		innerpanel = new AddCourseUI();
-		    		    		contentPane.add(innerpanel);
-		    		    		resizesysAdminHome();
-		    		    		//contentPane.revalidate();
-		    		    		//contentPane.repaint();
-		    		    		//lblNewLabel.setText(tp.getLastPathComponent().toString());
+		    		    		if(s.equals("Add New Course"))
+		    		    		{
+		    		    			pressed = true;
+		    		    			contentPane.remove(innerpanel);
+		    		    			innerpanel = new AddCourseUI();
+		    		    			contentPane.add(innerpanel);
+		    		    			Client.client.handleMessageFromClientUI(new Message("SELECT * FROM teaching_unit",QTypes.GetTeachunits));
+		    		    			resizesysAdminHome();
+		    		    			//contentPane.revalidate();
+		    		    			//contentPane.repaint();
+		    		    			//lblNewLabel.setText(tp.getLastPathComponent().toString());
+		    		    		}
 		    		    	}
 		    		    }
 		        }

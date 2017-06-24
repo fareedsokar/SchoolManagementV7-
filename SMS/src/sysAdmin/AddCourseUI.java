@@ -25,6 +25,7 @@ public class AddCourseUI extends JPanel {
 	 */
 	public AddCourseUI() {
 		
+		
 		setBackground(Color.WHITE);
 		setBounds(10, 59, 500, 350);
 		setLayout(null);
@@ -95,6 +96,10 @@ public class AddCourseUI extends JPanel {
 		lblPrecourses.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		lblPrecourses.setBounds(19, 154, 93, 20);
 		add(lblPrecourses);
+		
+		Choice choice = new Choice();
+		choice.setBounds(290, 31, 44, 20);
+		add(choice);
 
 	}
 }

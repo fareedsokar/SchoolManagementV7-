@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 
 import OurMessage.Message;
 import OurMessage.QTypes;
-import Secretary.CreatingSemesterUI;
 import chat.Client;
 import sysAdmin.sysAdminHomeUI;
 
@@ -136,25 +135,50 @@ public class HomeUI extends JFrame {
 		int myplus = 0;
 		//System.out.print( ((HomeUI)Client.clientGUI).getWidth() + " " + ((HomeUI)Client.clientGUI).innerpanel.getWidth()+ " 1\n");
 		if(((HomeUI)Client.clientGUI).getWidth() >= ((HomeUI)Client.clientGUI).innerpanel.getWidth())
+		{
+		
 			myY = ((HomeUI)Client.clientGUI).getWidth();
+			myplus =((HomeUI)Client.clientGUI).getWidth() - ((HomeUI)Client.clientGUI).innerpanel.getWidth();
+			btnLogout.setBounds(btnLogout.getX() - myplus, 11, 30, 30);
+			btnchangepass.setBounds(btnchangepass.getX() - myplus, 11, 30, 30);
+			btngetinfo.setBounds(btngetinfo.getX() - myplus, 11, 30, 30);
+			((HomeUI)Client.clientGUI).setBounds(((HomeUI)Client.clientGUI).getX()
+	        		,((HomeUI)Client.clientGUI).getY()
+	        		,(((HomeUI)Client.clientGUI).innerpanel.getWidth()+5)
+	        		,(((HomeUI)Client.clientGUI).innerpanel.getHeight()
+	        		+((HomeUI)Client.clientGUI).innerpanel.getY()+27));
+		}
 		else
 		{
 			myY = ((HomeUI)Client.clientGUI).innerpanel.getWidth();
 			myplus = ((HomeUI)Client.clientGUI).innerpanel.getWidth() - ((HomeUI)Client.clientGUI).getWidth();
+			btnLogout.setBounds(btnLogout.getX() + myplus, 11, 30, 30);
+			btnchangepass.setBounds(btnchangepass.getX() + myplus, 11, 30, 30);
+			btngetinfo.setBounds(btngetinfo.getX() + myplus, 11, 30, 30);
+			((HomeUI)Client.clientGUI).setBounds(((HomeUI)Client.clientGUI).getX()
+	        		,((HomeUI)Client.clientGUI).getY()
+	        		,(myY +5)
+	        		,(((HomeUI)Client.clientGUI).innerpanel.getHeight()
+	        		+((HomeUI)Client.clientGUI).innerpanel.getY()+27));
+		}
+		/*if(((HomeUI)Client.clientGUI).innerpanel.getWidth() < ((HomeUI)Client.clientGUI).getWidth())
+		{
+			myX = ((HomeUI)Client.clientGUI).getWidth() - ((HomeUI)Client.clientGUI).innerpanel.getWidth();
 		}
 	/*	if(((HomeUI)Client.clientGUI).getHeight() >= ((HomeUI)Client.clientGUI).innerpanel.getHeight())
 			myX = ((HomeUI)Client.clientGUI).getHeight();
 		else
-			myX = ((HomeUI)Client.clientGUI).innerpanel.getHeight();*/
+			myX = ((HomeUI)Client.clientGUI).innerpanel.getHeight();
 		
 		btnLogout.setBounds(btnLogout.getX() + myplus, 11, 30, 30);
 		btnchangepass.setBounds(btnchangepass.getX() + myplus, 11, 30, 30);
 		btngetinfo.setBounds(btngetinfo.getX() + myplus, 11, 30, 30);
+		
 		((HomeUI)Client.clientGUI).setBounds(((HomeUI)Client.clientGUI).getX()
         		,((HomeUI)Client.clientGUI).getY()
         		,(myY+5)
         		,(((HomeUI)Client.clientGUI).innerpanel.getHeight()
-        		+((HomeUI)Client.clientGUI).innerpanel.getY()+27));
+        		+((HomeUI)Client.clientGUI).innerpanel.getY()+27));*/
 		//((HomeUI)Client.clientGUI).btnLogout.setBounds(btnLogout.getBounds().x + , 11, width, height);
         ((HomeUI)Client.clientGUI).setResizable(false);
     ((HomeUI)Client.clientGUI).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

@@ -39,7 +39,7 @@ public class SecretaryHomeUI extends JPanel {
 		btnS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				((HomeUI)Client.clientGUI).ChangeJPanel(new CreatingSemesterUI());
+				//((HomeUI)Client.clientGUI).ChangeJPanel(new CreatingSemesterUI());
 			}
 		});
 		btnS.setBounds(0, 11, 89, 23);
