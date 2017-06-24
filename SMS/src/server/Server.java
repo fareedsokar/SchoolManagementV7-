@@ -172,6 +172,7 @@ public class Server extends AbstractServer {
 				  rs=stmt.executeQuery(((Message)msg).GetQuery());
 				  
 				  if (rs.next()) {
+					  System.out.println("Semester: ID="+rs.getInt(1));
 					  serv.display("["+dtf.format(now)+"] Checking Semester_ID="+rs.getInt(1)+" duration!");
 					  Date dt=rs.getDate(3);
 					  Date today=new Date();

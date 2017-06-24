@@ -2,16 +2,26 @@ package Secretary;
 
 import javax.swing.JPanel;
 
+import org.jdatepicker.JDatePicker;
+import org.jdatepicker.impl.DateComponentFormatter;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import OurMessage.Message;
 import OurMessage.QTypes;
+import User.HomeUI;
 import chat.Client;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Properties;
 import java.awt.event.ActionEvent;
 
 public class CreatingSemesterUI extends JPanel {
@@ -21,16 +31,20 @@ public class CreatingSemesterUI extends JPanel {
 	private JLabel lblCheckIfCurrent;
 	private JLabel imgend= new JLabel(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Picture2.png"));
 	private JLabel imgabs= new JLabel(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Abs-icon.png"));
-
+	private JDatePickerImpl startdatePicker;
+	private JDatePickerImpl enddatePicker;
+	public JLabel lblLetter;
+	public int semID;
 	/**
 	 * Create the panel.
 	 */
 	public CreatingSemesterUI() {
 		setLayout(null);
-		setBounds(10, 59, 424, 300);
+		setBounds(10, 59, 415, 400);
 		panel = new JPanel();
-		panel.setBounds(10, 47, 404, 242);
+		panel.setBounds(0, 47, 315, 242);
 		add(panel);
+		
 		panel.setLayout(null);
 		btncheck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -50,20 +64,90 @@ public class CreatingSemesterUI extends JPanel {
 		add(btncheck);
 		
 		lblCheckIfCurrent = new JLabel("Check if current semester duration had expired!");
-		lblCheckIfCurrent.setBounds(50, 11, 259, 14);
+		lblCheckIfCurrent.setBounds(50, 11, 324, 14);
 		add(lblCheckIfCurrent);
 
+		//Inner Panel
+		//JDatePicker Setting UP
+		UtilDateModel model = new UtilDateModel();
+		Properties p = new Properties();
+		p.put("text.today", "Today");
+		p.put("text.month", "Month");
+		p.put("text.year", "Year");
+		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+		
 		imgstart.setBounds(88, 37, 30, 30);
 		panel.add(imgstart);
-		
+		startdatePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+		startdatePicker.setBounds(118, 37, 150, 25);
+		panel.add(startdatePicker);
 		
 		imgend.setBounds(88, 82, 30, 30);
 		panel.add(imgend);
-		
+		enddatePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+		enddatePicker.setBounds(118, 82, 150, 25);
+		panel.add(enddatePicker);
 		
 		imgabs.setBounds(88, 123, 30, 30);
 		panel.add(imgabs);
 		
+		lblLetter = new JLabel("");
+		lblLetter.setEnabled(false);
+		lblLetter.setBounds(118, 139, 46, 14);
+		panel.add(lblLetter);
 		
+		
+		
+		//Date Picking
+		//Date pick=(Date)datePicker.getModel().getValue();
+		
+		//Keep Last
+		this.changeEnbled(false);
+	}
+	public void changeEnbled(boolean set){
+		startdatePicker.getComponent(1).setEnabled(set);
+		startdatePicker.setEnabled(set);
+		enddatePicker.getComponent(1).setEnabled(set);
+		enddatePicker.setEnabled(set);
+		panel.setEnabled(set);
+	}
+	public void setErrSemester(){
+		this.remove(btncheck);
+		btncheck=new JButton(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Button-7-close-icon.png"));
+		this.add(btncheck);
+		
+	}
+	public void setSemester(){
+		changeEnbled(true);
+		this.remove(btncheck);
+		btncheck=new JButton(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Check-3-icon.png"));
+		btncheck.setEnabled(false);
+		this.add(btncheck);
+		semID=1;
+		lblLetter.setText("A");
+		//((HomeUI)Client.clientGUI).resizeHome();
+	}
+	private void removefrompanel(JComponent j){
+		((CreatingSemesterUI)((HomeUI)Client.clientGUI).innerpanel).remove(j);
+	}
+	private void addfrompanel(JComponent j){
+		((CreatingSemesterUI)((HomeUI)Client.clientGUI).innerpanel).add(j);
+	}
+	public void setSemester(int id,String cha){
+		changeEnbled(true);
+		 removefrompanel(btncheck);
+		//this.remove(btncheck);
+		btncheck=new JButton(new ImageIcon("img\\Secretary\\CreateSemesterUI\\Check-3-icon.png"));
+		btncheck.setEnabled(false);
+		addfrompanel(btncheck);
+		//this.add(btncheck);
+		semID=id+1;
+		switch(cha){
+		case "A":lblLetter.setText("B");	break;
+		case "B":lblLetter.setText("C");	break;
+		case "C":lblLetter.setText("A");	break;
+		}
+		//((HomeUI)Client.clientGUI).resizeHome();
+				
 	}
 }
