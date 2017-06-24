@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-
+import Student.*;
 public class LoginUI extends JFrame {
 
 	private JPanel contentPane;
@@ -90,7 +90,8 @@ public class LoginUI extends JFrame {
 	            ((HomeUI)Client.clientGUI).setResizable(true);
 	        	switch(access){
 				case 1://System.out.println("Welcome Back Student");
-					
+					((HomeUI)Client.clientGUI).innerpanel=new HomeStudent();
+					((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
 					break;
 				case 2://System.out.println("Welcome Back Teacher");
 
