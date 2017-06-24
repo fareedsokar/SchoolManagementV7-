@@ -48,6 +48,13 @@ public class ViewReportGui extends JPanel {
 		textField.setColumns(10);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel);
+				((HomeUI)Client.clientGUI).resizeHome();
+				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=newpan;
+			}
+		});
 		btnBack.setBounds(10, 245, 89, 29);
 		add(btnBack);
 		

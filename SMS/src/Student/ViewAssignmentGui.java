@@ -2,6 +2,8 @@ package Student;
 
 import javax.swing.JPanel;
 
+import OurMessage.Message;
+import OurMessage.QTypes;
 import User.HomeUI;
 import chat.Client;
 
@@ -11,14 +13,18 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ViewAssignmentGui extends JPanel {
 
 	JPanel newpan=new JPanel();
+	JComboBox coursecombo;
 	/**
 	 * Create the panel.
 	 */
 	public ViewAssignmentGui() {
+		 coursecombo = new JComboBox();
 		setBounds(135, 0, 289, 300);
 		setLayout(null);
 		newpan.setBounds(135, 0, 289, 300);
@@ -45,13 +51,22 @@ public class ViewAssignmentGui extends JPanel {
 		btnCancel.setBounds(150, 203, 89, 28);
 		add(btnCancel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(123, 50, 128, 22);
-		add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(123, 102, 128, 22);
-		add(comboBox_1);
+		
+		coursecombo.addMouseListener(new MouseAdapter() {
+			@Override // for course name:
+			public void mouseClicked(MouseEvent arg0) {
+			         Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment); 
+			         Client.client.handleMessageFromClientUI(msg);
+				
+			}
+		});
+		coursecombo.setBounds(123, 50, 128, 22);
+		add(coursecombo);
+		
+		JComboBox comboassignment = new JComboBox();
+		comboassignment.setBounds(123, 102, 128, 22);
+		add(comboassignment);
 		
 		JLabel lblViewAssignment = new JLabel("View Assignment :");
 		lblViewAssignment.setFont(new Font("Tahoma", Font.PLAIN, 15));
