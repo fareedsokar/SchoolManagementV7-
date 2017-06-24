@@ -19,6 +19,7 @@ import User.HomeUI;
 import sysAdmin.sysAdminHomeUI;
 import sysAdmin.AddCourseUI;
 import User.LoginUI;
+import Secretary.CreatingSemesterUI;
 //import common.Sys;
 /**
  * Client class represents as the user who sends the message to the server and
@@ -134,6 +135,9 @@ public class Client extends AbstractClient {
 			}
 			if(((Request)msg).getRequest() instanceof Semester){
 				//semester expired
+				
+				((CreatingSemesterUI)((HomeUI)clientGUI).innerpanel).setSemester(
+						((Semester)msg).getSemester_id(), ((Semester)msg).getSemesterLetter());
 			}
 			break;
 			
