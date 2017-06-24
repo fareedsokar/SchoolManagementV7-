@@ -128,9 +128,11 @@ public class Client extends AbstractClient {
 			if(((Request)msg).getRequest() instanceof Boolean)
 			{
 				if((Boolean)(((Request)msg).getRequest())){
-					//DB is Empty
+					//DB is Empty (NO SEMESTER CREATED YET)
+					((CreatingSemesterUI)((HomeUI)clientGUI).innerpanel).setSemester();
 				}else{
 					//Semester is still on
+					((CreatingSemesterUI)((HomeUI)clientGUI).innerpanel).setErrSemester();
 				}
 			}
 			if(((Request)msg).getRequest() instanceof Semester){
