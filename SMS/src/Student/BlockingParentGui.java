@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Entities.*; 
+
 import OurMessage.Message;
 import OurMessage.QTypes;
 import User.HomeUI;
@@ -17,6 +18,7 @@ import chat.Client;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.Date;
 import java.awt.event.ActionEvent;
 
 public class BlockingParentGui extends JPanel {
@@ -29,6 +31,7 @@ private int day;
 private int year;
 private int month;
    public JLabel lblMsg;
+   public static int count=0; 
     /**
 	 * Create the panel.
 	 */
@@ -56,8 +59,9 @@ private int month;
 				 day=Integer.parseInt(daytxt.getText());
 			      month=Integer.parseInt(monthtxt.getText());
 			      year=Integer.parseInt(yeartxt.getText());
-				//Date date=new Date(day,month,year);
-				Message msg=new Message("INSERT INTO messages values()",QTypes.blockparent); 
+			      count++; 
+				Date date=new Date(day,month,year);
+				Message msg=new Message("INSERT INTO messages values("+count+","+Client.client.user.getID()+",blockingParent,blockmyparents,"+date+","+2+");",QTypes.blockparent); 
 				 Client.client.handleMessageFromClientUI(msg);
 		           
 			}
