@@ -187,7 +187,23 @@ public class Client extends AbstractClient {
 			}
 			break; 
 			
-			
+		case 301:// filling the course comboBox :
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("empty combo");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof ArrayList<?>)
+			{
+				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
+				for (int i = 0; i < m.size(); i++) {
+		            //((AddCourseUI)((sysAdminHomeUI)((HomeUI)clientGUI).innerpanel).innerpanel).teacunit_choice.add(m.get(i));
+		            
+		        }
+			}
+			break; 
 		}
 	}
 	
