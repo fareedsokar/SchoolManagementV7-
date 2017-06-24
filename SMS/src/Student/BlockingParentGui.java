@@ -57,14 +57,8 @@ private int month;
 			      month=Integer.parseInt(monthtxt.getText());
 			      year=Integer.parseInt(yeartxt.getText());
 				//Date date=new Date(day,month,year);
-				
-				 // pid=subtextfield.getText();  // ask fareed how to insert values to the first column of message
-		       // Message msg=new Message("INSERT INTO messages (id) values ("+Client.user.getID()+");",QTypes.blockparent);//+","+Client.user.getID()+","+"BlockingParent"+","+"testblock"+","+date+",2)"+";",QTypes.blockparent); 
-		       
-				//	Client.client.handleMessageFromClientUI(msg);
-			//		System.out.printf("test date",date);
-					lblMsg.setText("Your request has been sent successfuly!");
-				 
+				Message msg=new Message("INSERT INTO messages values()",QTypes.blockparent); 
+				 Client.client.handleMessageFromClientUI(msg);
 		           
 			}
 		});
@@ -84,9 +78,6 @@ private int month;
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			//	((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel);
-				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel);
-				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=newpan; 
 				
 			}
 		});
