@@ -169,18 +169,13 @@ public class Server extends AbstractServer {
 				  // Student Blocking Parent .
 			  case 300:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
-				  if(rs.next()) {
-					  String []array=new String[5]; 
-					  int i =0;
-					  for(i=0;i<5;i++)  
-					  {
-					    	array[i]=rs.getString(1);
-					   } 
+				  if(rs.next()) // if it was successfully executed  
+				  {
 					  Request req300=new Request(true,QTypes.blockparent);
 					    try{
 							  client.sendToClient(req300);
 						  }catch(IOException ex){
-							  serv.display("["+dtf.format(now)+"] Error Sending back Teaching units statment!");
+							  serv.display("["+dtf.format(now)+"] Error Sending true statemnet block parent");
 						  }
 					}
 				  else 
@@ -190,7 +185,7 @@ public class Server extends AbstractServer {
 						  client.sendToClient(req300);
 					  }catch(IOException ex){
 					
-						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment block parent!");
 					  }
 				  }
 				  break;
