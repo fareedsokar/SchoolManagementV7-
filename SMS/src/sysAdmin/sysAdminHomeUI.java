@@ -42,7 +42,7 @@ public class sysAdminHomeUI extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	sysAdminMenuUI mytree = new sysAdminMenuUI();
+	public sysAdminMenuUI mytree = new sysAdminMenuUI();
 	public JPanel innerpanel = new JPanel();
 	public JPanel contentPane;
 	public Boolean pressed = false;
@@ -108,7 +108,7 @@ public class sysAdminHomeUI extends JPanel {
 		else
 			mypanelY = contentPane.getHeight();
 		
-		System.out.print(mypanelY +"  se\n");
+		//System.out.print(mypanelY +"  se\n");
 			//myorgpanel = 172 + mypanelY;
 		contentPane.setBounds(172, 0, mypanelX, mypanelY);
 		((HomeUI)Client.clientGUI).innerpanel.setBounds(((HomeUI)Client.clientGUI).innerpanel.getX(), 

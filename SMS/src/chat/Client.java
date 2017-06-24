@@ -11,10 +11,13 @@ import javax.swing.SwingUtilities;
 
 import ocsf.client.AbstractClient;
 import Entities.Semester;
+import Entities.TeachUnit;
 import Entities.User;
 import OurMessage.*;
 import Secretary.SecretaryHomeUI;
 import User.HomeUI;
+import sysAdmin.sysAdminHomeUI;
+import sysAdmin.AddCourseUI;
 import User.LoginUI;
 //import common.Sys;
 /**
@@ -133,6 +136,36 @@ public class Client extends AbstractClient {
 				//semester expired
 			}
 			break;
+			
+			
+			
+		case 200:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("empty");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof ArrayList<?>)
+			{
+				ArrayList<TeachUnit> m = ((ArrayList<TeachUnit>)((Request)msg).getRequest());
+				for (int i = 0; i < m.size(); i++) {
+		            ((AddCourseUI)((sysAdminHomeUI)((HomeUI)clientGUI).innerpanel).innerpanel).teacunit_choice.add(m.get(i).getTeachUnit_Name() + " '" + m.get(i).getTeachUnit_ID() +"'");
+		        }
+			}
+			/*if(((Request)msg).getRequest() instanceof TeachUnit[]){
+				//there is teachunits
+				TeachUnit[] alltu = (TeachUnit[])(((Request)msg).getRequest());
+				for(TeachUnit x : alltu)
+				{
+					((AddCourseUI)((sysAdminHomeUI)((HomeUI)clientGUI).innerpanel).innerpanel).teacunit_choice.add(x.getTeachUnit_Name() + " '" + x.getTeachUnit_ID() +"'");
+					((sysAdminHomeUI)((HomeUI)clientGUI).innerpanel).resizesysAdminHome();
+				}
+			}*/
+			break;
+			
+			
 		}
 	}
 	

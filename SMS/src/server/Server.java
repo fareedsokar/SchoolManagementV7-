@@ -12,6 +12,7 @@ import ocsf.server.*;
 import OurMessage.*;
 import Entities.AccessProfiles;
 import Entities.Semester;
+import Entities.TeachUnit;
 import Entities.User;
 public class Server extends AbstractServer {
 	//Class variables ***************************************************
@@ -81,6 +82,7 @@ public class Server extends AbstractServer {
 		  {	 
 			  stmt = conn.createStatement();
 			  int op = ((Message)msg).GetQType();
+			  
 			  switch(op){
 			  case 4:
 				  String[] parts = (((Message)msg).GetQuery()).split("/");
@@ -135,7 +137,35 @@ public class Server extends AbstractServer {
 				  break;
 				  
 				  
-				  
+			//System-Administrator	Cases
+			  case 200:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<TeachUnit> alltu=new ArrayList<TeachUnit>();
+					  int i =0;
+					    do { // Use 'do...while' to process the first row, while continuing to process remaining rows
+					    	alltu.add(new TeachUnit (rs.getString(1), rs.getString(2)));
+					    	//System.out.print(alltu[i].getTeachUnit_ID() + " " +  alltu[i].getTeachUnit_Name() +"\n and hereeee");
+					    } while (rs.next());
+					    Request req200=new Request(alltu,QTypes.GetTeachunits);
+					    try{
+							  client.sendToClient(req200);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back Teaching units statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req200=new Request(false,QTypes.GetTeachunits);
+					  try{
+						  client.sendToClient(req200);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }
+				  break;
 				  
 			 //SECRETARY CASES
 			  case 101:

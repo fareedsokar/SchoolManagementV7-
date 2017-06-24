@@ -12,13 +12,14 @@ import java.awt.Choice;
 import java.awt.Color;
 
 public class AddCourseUI extends JPanel {
-	private JTextField txtcourseid;
-	private JTextField txtcoursename;
-	private JTextField txtteachunit;
-	private JLabel lblLearnHours;
-	private JTextField txtlearnhours;
-	private JList list;
-	private JLabel lblPrecourses;
+	public JTextField txtcourseid;
+	public JTextField txtcoursename;
+	public JTextField txtteachunit;
+	public JLabel lblLearnHours;
+	public JTextField txtlearnhours;
+	public JList list;
+	public JLabel lblPrecourses;
+	public Choice teacunit_choice;
 
 	/**
 	 * Create the panel.
@@ -97,9 +98,10 @@ public class AddCourseUI extends JPanel {
 		lblPrecourses.setBounds(19, 154, 93, 20);
 		add(lblPrecourses);
 		
-		Choice choice = new Choice();
-		choice.setBounds(290, 31, 44, 20);
-		add(choice);
+		
+		teacunit_choice = new Choice();
+		teacunit_choice.setBounds(290, 31, 111, 20);
+		add(teacunit_choice);
 
 	}
 }
