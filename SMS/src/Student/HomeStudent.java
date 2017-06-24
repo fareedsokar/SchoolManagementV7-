@@ -17,7 +17,7 @@ public class HomeStudent extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	 JPanel panel;
+	 public JPanel panel;
 	public HomeStudent() {
 			setBounds(10, 59, 424, 300);
 		setLayout(null);

@@ -166,6 +166,36 @@ public class Server extends AbstractServer {
 					  }
 				  }
 				  break;
+				  // Student Blocking Parent .
+			  case 300:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) {
+					  String []array=new String[5]; 
+					  int i =0;
+					  for(i=0;i<5;i++)  
+					  {
+					    	array[i]=rs.getString(1);
+					   } 
+					  Request req300=new Request(true,QTypes.blockparent);
+					    try{
+							  client.sendToClient(req300);
+						  }catch(IOException ex){
+							  serv.display("["+dtf.format(now)+"] Error Sending back Teaching units statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req300=new Request(false,QTypes.blockparent);
+					  try{
+						  client.sendToClient(req300);
+					  }catch(IOException ex){
+					
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }
+				  break;
+				  
+				  
 				  
 			 //SECRETARY CASES
 			  case 101:

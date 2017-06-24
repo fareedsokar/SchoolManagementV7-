@@ -20,6 +20,7 @@ import sysAdmin.sysAdminHomeUI;
 import sysAdmin.AddCourseUI;
 import User.LoginUI;
 import Secretary.CreatingSemesterUI;
+import Student.*; 
 //import common.Sys;
 /**
  * Client class represents as the user who sends the message to the server and
@@ -171,6 +172,20 @@ public class Client extends AbstractClient {
 				}
 			}*/
 			break;
+		case 300:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(((Request)msg).getRequest().equals(true))
+				{
+					 ((BlockingParentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).lblMsg.setText("your request has been sent successfully. ");	
+				}
+				else 
+				{
+					((BlockingParentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).lblMsg.setText("your request has failed,check errors ");
+				}
+				
+			}
+			break; 
 			
 			
 		}

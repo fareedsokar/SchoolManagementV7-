@@ -105,5 +105,10 @@ private int month;
 		yeartxt.setColumns(10);
 
 	}
+	public void setlabel(String str)
+	{
+		this.lblMsg.setText(str);
+		this.lblMsg.setVisible(true);
+	}
 }
 
