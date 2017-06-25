@@ -196,7 +196,7 @@ public class Client extends AbstractClient {
 				}
 			}
 			if(((Request)msg).getRequest() instanceof ArrayList<?>)
-			{
+			{    ((ViewAssignmentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).coursecombo.removeAllItems();
 				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
 				for (int i = 0; i < m.size(); i++) {
 					((ViewAssignmentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).coursecombo.addItem(m.get(i));; 
@@ -220,6 +220,40 @@ public class Client extends AbstractClient {
 				}
 			}
 			break; 
+		case 303:// filling the course comboBox :
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("empty assignment combo");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof ArrayList<?>)
+			{
+				((DownloadAssignment)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).coursecombo.removeAllItems();
+				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
+				for (int i = 0; i < m.size(); i++) {
+					((DownloadAssignment)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).coursecombo.addItem(m.get(i));; 
+				}
+			}
+			break;
+		case 304:// filling the course comboBox :
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("empty assignment combo");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof ArrayList<?>)
+			{
+				((DownloadAssignment)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).assignmentcombo.removeAllItems();
+				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
+				for (int i = 0; i < m.size(); i++) {
+					((DownloadAssignment)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).assignmentcombo.addItem(m.get(i));; 
+				}
+			}
+			break;
 		}
 	}
 	

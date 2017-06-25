@@ -226,6 +226,65 @@ public class Server extends AbstractServer {
 					  }
 				  }
 				  break;
+			  case 303:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				 
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<Integer> alltu=new ArrayList<Integer>();
+					 // int i =0;
+					 do{ 
+					    	//i++;
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next()); 
+					    Request req301=new Request(alltu,QTypes.coursedownload);
+					    try{ System.out.print("server301 send to client");
+							  client.sendToClient(req301);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back assignmentcombo statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req301=new Request(false,QTypes.coursedownload);
+					  try{
+						  client.sendToClient(req301);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break; 
+				  
+			  case 304:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				 
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<Integer> alltu=new ArrayList<Integer>();
+					 // int i =0;
+					 do{ 
+					    	//i++;
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next()); 
+					    Request req304=new Request(alltu,QTypes.assignmentcombodownload);
+					    try{ System.out.print("server304 send to client");
+							  client.sendToClient(req304);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back assignmentcombo statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req301=new Request(false,QTypes.assignmentcombodownload);
+					  try{
+						  client.sendToClient(req301);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break;
 			  case 300:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
 				  if(rs.next()) // if it was successfully executed  

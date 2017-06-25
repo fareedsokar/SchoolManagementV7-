@@ -2,6 +2,8 @@ package Student;
 
 import javax.swing.JPanel;
 
+import OurMessage.Message;
+import OurMessage.QTypes;
 import User.HomeUI;
 import chat.Client;
 
@@ -11,10 +13,14 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DownloadAssignment extends JPanel {
  
 	JPanel newpan=new JPanel();
+	public JComboBox coursecombo;
+	public JComboBox assignmentcombo;
 	
 	/**
 	 * Create the panel.
@@ -28,7 +34,14 @@ public class DownloadAssignment extends JPanel {
 		lblCourseName.setBounds(10, 63, 109, 21);
 		add(lblCourseName);
 		
-		JComboBox coursecombo = new JComboBox();
+		coursecombo = new JComboBox();
+		coursecombo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+		         Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.coursedownload);    
+		         Client.client.handleMessageFromClientUI(msg);
+			}
+		});
 		coursecombo.setBounds(129, 63, 108, 21);
 		add(coursecombo);
 		
@@ -36,9 +49,16 @@ public class DownloadAssignment extends JPanel {
 		lblAssignment.setBounds(10, 143, 109, 22);
 		add(lblAssignment);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(129, 145, 108, 20);
-		add(comboBox);
+		assignmentcombo = new JComboBox();
+		assignmentcombo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				 Message msg=new Message("select assignemntpersourse from assignemntcourse where CourseId="+Integer.parseInt((coursecombo.getSelectedItem().toString()))+";",QTypes.assignmentcombodownload);    
+		         Client.client.handleMessageFromClientUI(msg);
+			}
+		});
+		assignmentcombo.setBounds(129, 145, 108, 20);
+		add(assignmentcombo);
 		
 		JButton btnDownload = new JButton("Download");
 		btnDownload.setBounds(10, 226, 94, 23);
