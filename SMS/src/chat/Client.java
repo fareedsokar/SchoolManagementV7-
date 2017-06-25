@@ -272,7 +272,23 @@ public class Client extends AbstractClient {
 				}
 			}
 			break;
-			
+		case 306:// filling the course comboBox for material:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("empty assignment combo");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof ArrayList<?>)
+			{
+				((ViewMaterialsGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).MaterialCombo.removeAllItems();
+				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
+				for (int i = 0; i < m.size(); i++) {
+					((ViewMaterialsGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).MaterialCombo.addItem(m.get(i));; 
+				}
+			}
+			break;
 			
 			
 			

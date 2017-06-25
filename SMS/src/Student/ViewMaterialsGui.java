@@ -52,6 +52,15 @@ public class ViewMaterialsGui extends JPanel {
 		add(lblMaterials);
 		
 		 MaterialCombo = new JComboBox();
+		 MaterialCombo.addMouseListener(new MouseAdapter() {
+		 	@Override
+		 	public void mouseClicked(MouseEvent e) {
+		 		// select MaterialId from sms.materialcourse where CourseId=1234;
+		 		 Message msg=new Message("select  MaterialId from materialcourse where CourseId="+Integer.parseInt(Coursecombo.getSelectedItem().toString())+";",QTypes.materialcourse);    
+		         Client.client.handleMessageFromClientUI(msg);
+		 		
+		 	}
+		 });
 		MaterialCombo.setBounds(66, 172, 138, 27);
 		add(MaterialCombo);
 		

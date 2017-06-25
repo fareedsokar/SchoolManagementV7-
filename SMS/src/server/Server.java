@@ -316,6 +316,34 @@ public class Server extends AbstractServer {
 					  }
 				  }break; 
 				  
+			  case 306:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<Integer> alltu=new ArrayList<Integer>();
+					 // int i =0;
+					 do{ 
+					    	//i++;
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next()); 
+					    Request req306=new Request(alltu,QTypes.materialcourse);
+					    try{ System.out.print("server306 send to client");
+							  client.sendToClient(req306);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back materia.combo in view material statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req306=new Request(false,QTypes.materialcourse);
+					  try{
+						  client.sendToClient(req306);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break; 
 				  
 				  
 				  
