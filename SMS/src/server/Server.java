@@ -402,8 +402,33 @@ public class Server extends AbstractServer {
 						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
 					  }
 				  }break; 
-				  
-				  
+			/*	  
+			  case 309:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					int id=0; 
+					 // int i =0;
+					
+					    id=Integer.parseInt((rs.getString(1)));
+					    Request req308=new Request(id,QTypes.getparentid);
+					    try{ System.out.print("server309 send to client");
+							  client.sendToClient(req308);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back parent id");
+						  }
+					}
+				  else 
+				  {
+					  Request req309=new Request(false,QTypes.getparentid);
+					  try{
+						  client.sendToClient(req309);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break; 
+				  */
 			  case 300:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
 				  if(rs.next()) // if it was successfully executed  

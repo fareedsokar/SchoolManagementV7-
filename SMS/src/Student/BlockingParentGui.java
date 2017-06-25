@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BlockingParentGui extends JPanel {
     private String pid; 
@@ -31,7 +33,8 @@ private int day;
 private int year;
 private int month;
    public JLabel lblMsg;
-   public static int count=0; 
+   public static int count=0;
+   public int parent_id;
     /**
 	 * Create the panel.
 	 */
@@ -52,7 +55,7 @@ private int month;
 		add(lblMsg);
 	
 		JButton btnBlockParent = new JButton("Block parent"); // i should do request
-		
+	
 		btnBlockParent.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
@@ -117,4 +120,3 @@ private int month;
 		this.lblMsg.setVisible(true);
 	}
 }
-

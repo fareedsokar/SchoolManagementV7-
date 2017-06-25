@@ -173,7 +173,7 @@ public class Client extends AbstractClient {
 			}*/
 			break;
 		case 300:
-			if(((Request)msg).getRequest() instanceof Boolean)
+			/*if(((Request)msg).getRequest() instanceof Boolean)
 			{
 				if(((Request)msg).getRequest().equals(true))
 				{
@@ -184,7 +184,7 @@ public class Client extends AbstractClient {
 					((BlockingParentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).lblMsg.setText("your request has failed,check errors ");
 				}
 				
-			}
+			}*/
 			break; 
 			
 		case 301:// filling the course comboBox :
@@ -325,10 +325,25 @@ public class Client extends AbstractClient {
 				}
 			}
 			break;
+		case 309:// filling the course comboBox for material:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("Error client parent id case 309");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof Integer)
+			{
+				((BlockingParentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).parent_id=(Integer)((Request)msg).getRequest();
+			}
+			break;
 			
-			
-		}
+			}
+	
 	}
+		
+	
 	
     /**
      * This method handles all data coming from the UI

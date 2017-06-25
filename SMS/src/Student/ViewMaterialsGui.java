@@ -24,6 +24,7 @@ public class ViewMaterialsGui extends JPanel {
 	 * Create the panel.
 	 */
 	public ViewMaterialsGui() {
+		int parent_id=0; 
 		setBounds(135, 0, 289, 300);
 		setLayout(null);
 		newpan.setBounds(135, 0, 289, 300);
@@ -36,7 +37,7 @@ public class ViewMaterialsGui extends JPanel {
 	    Coursecombo.addMouseListener(new MouseAdapter() {
 	    	@Override
 	    	public void mouseClicked(MouseEvent e) {
-	    		 Message msg=new Message("select distinct CourseId from materialcourse;",QTypes.coursecombomaterial);    
+	    		 Message msg=new Message("select distinct CourseId from materialcourse; ",QTypes.coursecombomaterial);    
 		         Client.client.handleMessageFromClientUI(msg);
 	    	}
 	    });
