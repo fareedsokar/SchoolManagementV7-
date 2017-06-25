@@ -29,7 +29,7 @@ public class ViewAssignmentGui extends JPanel {
 		setBounds(135, 0, 289, 300);
 		setLayout(null);
 		newpan.setBounds(135, 0, 289, 300);
-		JLabel lblCourseName = new JLabel("Course Name:");
+		JLabel lblCourseName = new JLabel("Course ID");
 		lblCourseName.setBounds(10, 50, 101, 22);
 		add(lblCourseName);
 		

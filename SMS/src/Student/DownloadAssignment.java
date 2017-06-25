@@ -30,7 +30,7 @@ public class DownloadAssignment extends JPanel {
 		setBounds(135, 0, 289, 300);
 		setLayout(null);
 		newpan.setBounds(135, 0, 289, 300);
-		JLabel lblCourseName = new JLabel("Course Name:");
+		JLabel lblCourseName = new JLabel("Course ID");
 		lblCourseName.setBounds(10, 63, 109, 21);
 		add(lblCourseName);
 		

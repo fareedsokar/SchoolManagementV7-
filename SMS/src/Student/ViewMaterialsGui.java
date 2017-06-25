@@ -2,6 +2,8 @@ package Student;
 
 import javax.swing.JPanel;
 
+import OurMessage.Message;
+import OurMessage.QTypes;
 import User.HomeUI;
 import chat.Client;
 
@@ -11,10 +13,13 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ViewMaterialsGui extends JPanel {
-
+    public JComboBox Coursecombo ;
 	JPanel newpan=new JPanel(); 
+	public JComboBox MaterialCombo;
 	/**
 	 * Create the panel.
 	 */
@@ -27,9 +32,16 @@ public class ViewMaterialsGui extends JPanel {
 		lblMaterialsPerCourse.setBounds(10, 11, 138, 33);
 		add(lblMaterialsPerCourse);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(66, 91, 138, 27);
-		add(comboBox);
+	    Coursecombo = new JComboBox();
+	    Coursecombo.addMouseListener(new MouseAdapter() {
+	    	@Override
+	    	public void mouseClicked(MouseEvent e) {
+	    		 Message msg=new Message("select distinct CourseId from materialcourse;",QTypes.coursecombomaterial);    
+		         Client.client.handleMessageFromClientUI(msg);
+	    	}
+	    });
+		Coursecombo.setBounds(66, 91, 138, 27);
+		add(Coursecombo);
 		
 		JLabel lblCourseName = new JLabel("Course Name :");
 		lblCourseName.setBounds(10, 55, 138, 29);
@@ -39,9 +51,9 @@ public class ViewMaterialsGui extends JPanel {
 		lblMaterials.setBounds(10, 147, 83, 27);
 		add(lblMaterials);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(66, 172, 138, 27);
-		add(comboBox_1);
+		 MaterialCombo = new JComboBox();
+		MaterialCombo.setBounds(66, 172, 138, 27);
+		add(MaterialCombo);
 		
 		JButton btnView = new JButton("View");
 		btnView.setBounds(10, 246, 89, 23);

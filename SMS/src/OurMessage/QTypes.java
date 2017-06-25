@@ -18,4 +18,5 @@ public class QTypes {
 	public static int assignmentcombo=302; // filling assignment combo request
 	public static int coursedownload=303; // filling combo for course download assignment 
 	public static int assignmentcombodownload=304;// filling assignment downlaod
+	public static int coursecombomaterial=305; // filling combo in view/download material per course
 }

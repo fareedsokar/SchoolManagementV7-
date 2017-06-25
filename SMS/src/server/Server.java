@@ -285,6 +285,40 @@ public class Server extends AbstractServer {
 						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
 					  }
 				  }break;
+				  
+			  case 305:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				 
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<Integer> alltu=new ArrayList<Integer>();
+					 // int i =0;
+					 do{ 
+					    	//i++;
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next()); 
+					    Request req305=new Request(alltu,QTypes.coursecombomaterial);
+					    try{ System.out.print("server305 send to client");
+							  client.sendToClient(req305);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back coursecombo in view material statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req305=new Request(false,QTypes.coursecombomaterial);
+					  try{
+						  client.sendToClient(req305);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break; 
+				  
+				  
+				  
+				  
 			  case 300:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
 				  if(rs.next()) // if it was successfully executed  
