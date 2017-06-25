@@ -20,6 +20,7 @@ public class ViewAssignmentGui extends JPanel {
 
 	JPanel newpan=new JPanel();
 	public JComboBox coursecombo;
+	public JComboBox comboassignment; 
 	/**
 	 * Create the panel.
 	 */
@@ -58,17 +59,20 @@ public class ViewAssignmentGui extends JPanel {
 			public void mouseClicked(MouseEvent arg0) {
 			         Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment);    
 			         Client.client.handleMessageFromClientUI(msg);
-			}/*
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				 Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment); 
-		         Client.client.handleMessageFromClientUI(msg);
-			}*/});
+			}
+		});
 	
 		coursecombo.setBounds(123, 50, 128, 22);
 		add(coursecombo);
 		
-		JComboBox comboassignment = new JComboBox();
+		 comboassignment = new JComboBox();
+		comboassignment.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				 Message msg=new Message("select assignemntpersourse from assignemntcourse where CourseId="+Integer.parseInt((coursecombo.getSelectedItem().toString()))+";",QTypes.assignmentcombo);    
+		         Client.client.handleMessageFromClientUI(msg);
+			}
+		});
 		comboassignment.setBounds(123, 102, 128, 22);
 		add(comboassignment);
 		

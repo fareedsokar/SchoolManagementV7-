@@ -15,4 +15,5 @@ public class QTypes {
 	public static int GetTeachunits = 200;
 	public static int blockparent=300; 
 	public static int courseassignment=301;// for view assignment combo
+	public static int assignmentcombo=302; // filling assignment combo request
 }
