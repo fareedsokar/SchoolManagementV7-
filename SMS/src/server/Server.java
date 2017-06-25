@@ -171,12 +171,12 @@ public class Server extends AbstractServer {
 				 
 				  if(rs.next()) { // Checks for any results and moves cursor to first row,
 					  ArrayList<Integer> alltu=new ArrayList<Integer>();
-					  int i =0;
-					   while (rs.next()){ 
-					    	i++; // Use 'do...while' to process the first row, while continuing to process remaining rows
-					    	alltu.add(Integer.parseInt((rs.getString(i))));
-					    	//System.out.print(alltu[i].getTeachUnit_ID() + " " +  alltu[i].getTeachUnit_Name() +"\n and hereeee");
-					    } 
+					 // int i =0;
+					 do{ 
+					    	//i++;
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next()); 
 					    Request req301=new Request(alltu,QTypes.courseassignment);
 					    try{ System.out.print("server301 send to client");
 							  client.sendToClient(req301);
