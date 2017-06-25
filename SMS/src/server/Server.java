@@ -344,7 +344,64 @@ public class Server extends AbstractServer {
 						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
 					  }
 				  }break; 
+			  case 307:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<Integer> alltu=new ArrayList<Integer>();
+					 // int i =0;
+					 do{ 
+					    	//i++;
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next()); 
+					    Request req307=new Request(alltu,QTypes.materialcoursedownload);
+					    try{ System.out.print("server307 send to client");
+							  client.sendToClient(req307);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back materia.combo in view material statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req307=new Request(false,QTypes.materialcoursedownload);
+					  try{
+						  client.sendToClient(req307);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break; 
 				  
+				  
+			  case 308:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<Integer> alltu=new ArrayList<Integer>();
+					 // int i =0;
+					 do{ 
+					    	//i++;
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next()); 
+					    Request req308=new Request(alltu,QTypes.materialcombodownload);
+					    try{ System.out.print("server308 send to client");
+							  client.sendToClient(req308);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back materia.combo in download material statment!");
+						  }
+					}
+				  else 
+				  {
+					  Request req308=new Request(false,QTypes.materialcombodownload);
+					  try{
+						  client.sendToClient(req308);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break; 
 				  
 				  
 			  case 300:

@@ -2,6 +2,8 @@ package Student;
 
 import javax.swing.JPanel;
 
+import OurMessage.Message;
+import OurMessage.QTypes;
 import User.HomeUI;
 import chat.Client;
 
@@ -11,9 +13,13 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DownloadMaterialsGui extends JPanel {
 
+	public JComboBox coursecombo;
+	public JComboBox materialcombo;
 	JPanel newpan=new JPanel();
 	/**
 	 * Create the panel.
@@ -27,21 +33,35 @@ public class DownloadMaterialsGui extends JPanel {
 		lblDownloadMaterials.setBounds(43, 11, 142, 34);
 		add(lblDownloadMaterials);
 		
-		JLabel lblCourseName = new JLabel("Course Name:");
+		JLabel lblCourseName = new JLabel("Course ID:");
 		lblCourseName.setBounds(20, 56, 119, 26);
 		add(lblCourseName);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(59, 83, 126, 26);
-		add(comboBox);
+		 coursecombo = new JComboBox();
+		coursecombo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) { // filling courses combobox
+				Message msg=new Message("select distinct CourseId from materialcourse;",QTypes.materialcoursedownload);    
+		         Client.client.handleMessageFromClientUI(msg);
+			}
+		});
+		coursecombo.setBounds(59, 83, 126, 26);
+		add(coursecombo);
 		
 		JLabel lblMaterial = new JLabel("Material :");
 		lblMaterial.setBounds(20, 145, 61, 26);
 		add(lblMaterial);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(59, 182, 133, 26);
-		add(comboBox_1);
+		materialcombo = new JComboBox();
+		materialcombo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				 Message msg=new Message("select  MaterialId from materialcourse where CourseId="+Integer.parseInt(coursecombo.getSelectedItem().toString())+";",QTypes.materialcombodownload);    
+		         Client.client.handleMessageFromClientUI(msg);
+			}
+		});
+		materialcombo.setBounds(59, 182, 133, 26);
+		add(materialcombo);
 		
 		JButton btnNewButton = new JButton("Download");
 		btnNewButton.setBounds(10, 239, 89, 23);

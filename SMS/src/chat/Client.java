@@ -290,7 +290,41 @@ public class Client extends AbstractClient {
 			}
 			break;
 			
+		case 307:// filling the course comboBox for material:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("empty assignment combo");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof ArrayList<?>)
+			{
+				((DownloadMaterialsGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).coursecombo.removeAllItems();
+				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
+				for (int i = 0; i < m.size(); i++) {
+					((DownloadMaterialsGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).coursecombo.addItem(m.get(i));; 
+				}
+			}
+			break;
 			
+		case 308:// filling the course comboBox for material:
+			if(((Request)msg).getRequest() instanceof Boolean)
+			{
+				if(!(Boolean)(((Request)msg).getRequest())){
+					//DB is Empty
+					System.out.print("empty assignment combo");
+				}
+			}
+			if(((Request)msg).getRequest() instanceof ArrayList<?>)
+			{
+				((DownloadMaterialsGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).materialcombo.removeAllItems();
+				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
+				for (int i = 0; i < m.size(); i++) {
+					((DownloadMaterialsGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).materialcombo.addItem(m.get(i));; 
+				}
+			}
+			break;
 			
 			
 		}
