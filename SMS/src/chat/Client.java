@@ -199,9 +199,8 @@ public class Client extends AbstractClient {
 			{
 				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
 				for (int i = 0; i < m.size(); i++) {
-		            //((AddCourseUI)((sysAdminHomeUI)((HomeUI)clientGUI).innerpanel).innerpanel).teacunit_choice.add(m.get(i));
-		            
-		        }
+					((ViewAssignmentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).coursecombo.addItem(m.get(i));; 
+				}
 			}
 			break; 
 		}

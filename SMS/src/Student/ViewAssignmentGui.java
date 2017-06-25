@@ -19,7 +19,7 @@ import java.awt.event.MouseEvent;
 public class ViewAssignmentGui extends JPanel {
 
 	JPanel newpan=new JPanel();
-	JComboBox coursecombo;
+	public JComboBox coursecombo;
 	/**
 	 * Create the panel.
 	 */
