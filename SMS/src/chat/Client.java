@@ -213,6 +213,7 @@ public class Client extends AbstractClient {
 			}
 			if(((Request)msg).getRequest() instanceof ArrayList<?>)
 			{
+				((ViewAssignmentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).comboassignment.removeAllItems();
 				ArrayList<Integer> m = ((ArrayList<Integer>)((Request)msg).getRequest());
 				for (int i = 0; i < m.size(); i++) {
 					((ViewAssignmentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).comboassignment.addItem(m.get(i));; 
