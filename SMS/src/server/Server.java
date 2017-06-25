@@ -136,7 +136,6 @@ public class Server extends AbstractServer {
 				  serv.display("["+dtf.format(now)+"] User: "+client.getInfo("name")+" has been disconnected!" );
 				  break;
 				  
-				  
 			//System-Administrator	Cases
 			  case 200:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
@@ -186,36 +185,6 @@ public class Server extends AbstractServer {
 					  }catch(IOException ex){
 					
 						  serv.display("["+dtf.format(now)+"] Error Sending back false statment block parent!");
-					  }
-				  }
-				  break;
-				  
-			  case 301:
-				  rs = stmt.executeQuery(((Message) msg).GetQuery());
-				  if(rs.next()) { // Checks for any results and moves cursor to first row,
-					  ArrayList<Integer> alltu=new ArrayList<Integer>();
-					  int i =0;
-					    do { 
-					    	i++; // Use 'do...while' to process the first row, while continuing to process remaining rows
-					    	alltu.add(Integer.parseInt((rs.getString(i))));
-					    	//System.out.print(alltu[i].getTeachUnit_ID() + " " +  alltu[i].getTeachUnit_Name() +"\n and hereeee");
-					    } while (rs.next());
-					    Request req301=new Request(alltu,QTypes.courseassignment);
-					    try{
-							  client.sendToClient(req301);
-						  }catch(IOException ex){
-							 //Do Somthing
-							  serv.display("["+dtf.format(now)+"] Error Sending back coursename statment!");
-						  }
-					}
-				  else 
-				  {
-					  Request req301=new Request(false,QTypes.courseassignment);
-					  try{
-						  client.sendToClient(req301);
-					  }catch(IOException ex){
-						 //Do Somthing
-						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
 					  }
 				  }
 				  break;

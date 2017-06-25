@@ -56,11 +56,17 @@ public class ViewAssignmentGui extends JPanel {
 		coursecombo.addMouseListener(new MouseAdapter() {
 			@Override // for course name:
 			public void mouseClicked(MouseEvent arg0) {
-			         Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment); 
+			         Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment);    
 			         Client.client.handleMessageFromClientUI(msg);
+			        
 				
 			}
-		});
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				 Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment); 
+		         Client.client.handleMessageFromClientUI(msg);
+			}});
+	
 		coursecombo.setBounds(123, 50, 128, 22);
 		add(coursecombo);
 		
