@@ -1,0 +1,14 @@
+package Student;
+
+import javax.swing.JPanel;
+
+public class UploadAssignment extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public UploadAssignment() {
+
+	}
+
+}

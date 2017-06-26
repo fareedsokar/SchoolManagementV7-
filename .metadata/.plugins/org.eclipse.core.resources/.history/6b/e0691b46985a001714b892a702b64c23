@@ -1,0 +1,93 @@
+package Student;
+
+import javax.swing.JPanel;
+
+
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import Entities.*; 
+
+import OurMessage.Message;
+import OurMessage.QTypes;
+import User.HomeUI;
+import chat.Client;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.TextArea;
+
+public class BlockingParentGui extends JPanel {
+    private String pid; 
+   public JLabel lblMsg;
+   public  int count;
+   public int parent_id;
+   public int id_message; 
+   private final TextArea contenttextfield = new TextArea();
+   private final JLabel lbltoday = new JLabel("");
+    /**
+	 * Create the panel.
+	 */
+	public BlockingParentGui() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		
+		setBounds(135, 0, 289, 300);
+		setLayout(null); 
+		JPanel newpan=new JPanel(); // Creating an Empty Jpanel for the Cancel Button .
+		newpan.setBounds(135, 0, 289, 300);
+		JLabel lblParentsBlocking = new JLabel("Parents Blocking : ");
+		lblParentsBlocking.setBounds(10, 11, 155, 31);
+		add(lblParentsBlocking);
+	      
+		//System.out.printf("test date",date);
+		 lblMsg = new JLabel("New label");
+		lblMsg.setEnabled(false);
+		lblMsg.setVisible(false);
+		lblMsg.setBounds(27, 218, 252, 28);
+		add(lblMsg);
+contenttextfield.setBounds(10, 82, 269, 130);
+		
+		add(contenttextfield);
+		JButton btnBlockParent = new JButton("Block parent"); // i should do request
+	
+		btnBlockParent.addActionListener(new ActionListener() {
+		
+			public void actionPerformed(ActionEvent e) {
+			    Message  msg=new Message("Insert into messages values ("+id_message+","+Client.client.user.getID()+",blociking parent,msg_context,msgdate,status);",QTypes.blockparent2); // updating DB messages .
+			       
+			       
+			}
+		});
+		btnBlockParent.setBounds(10, 245, 107, 31);
+		add(btnBlockParent);
+		
+		JLabel lblMessageContent = new JLabel("Message content:");
+		lblMessageContent.setBounds(10, 53, 103, 14);
+		add(lblMessageContent);
+		JButton btnCancel = new JButton("Cancel");
+	
+		
+		btnCancel.setBounds(177, 247, 102, 27);
+		add(btnCancel);
+		
+		JLabel lblDate = new JLabel("Date:");
+		lblDate.setBounds(175, 19, 34, 14);
+		add(lblDate);
+		
+		lbltoday.setBounds(205, 19, 74, 14);
+		lbltoday.setText(dtf.format(now));
+		add(lbltoday);
+
+	}
+	
+}

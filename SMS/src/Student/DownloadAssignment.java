@@ -38,7 +38,8 @@ public class DownloadAssignment extends JPanel {
 		coursecombo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-		         Message msg=new Message("select distinct CourseId from assignemntcourse;",QTypes.coursedownload);    
+				assignmentcombo.removeAllItems();
+				 Message msg=new Message("select assignemntpersourse from assignemntcourse where CourseId="+Integer.parseInt((coursecombo.getSelectedItem().toString()))+";",QTypes.assignmentcombodownload);    
 		         Client.client.handleMessageFromClientUI(msg);
 			}
 		});
@@ -50,13 +51,7 @@ public class DownloadAssignment extends JPanel {
 		add(lblAssignment);
 		
 		assignmentcombo = new JComboBox();
-		assignmentcombo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				 Message msg=new Message("select assignemntpersourse from assignemntcourse where CourseId="+Integer.parseInt((coursecombo.getSelectedItem().toString()))+";",QTypes.assignmentcombodownload);    
-		         Client.client.handleMessageFromClientUI(msg);
-			}
-		});
+		
 		assignmentcombo.setBounds(129, 145, 108, 20);
 		add(assignmentcombo);
 		

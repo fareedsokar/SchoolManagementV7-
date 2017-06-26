@@ -32,12 +32,13 @@ public class ViewMaterialsGui extends JPanel {
 		lblMaterialsPerCourse.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblMaterialsPerCourse.setBounds(10, 11, 138, 33);
 		add(lblMaterialsPerCourse);
-		
+		 MaterialCombo = new JComboBox();
 	    Coursecombo = new JComboBox();
 	    Coursecombo.addMouseListener(new MouseAdapter() {
 	    	@Override
 	    	public void mouseClicked(MouseEvent e) {
-	    		 Message msg=new Message("select distinct CourseId from materialcourse; ",QTypes.coursecombomaterial);    
+	    		 MaterialCombo.removeAllItems();
+	    		 Message msg=new Message("select  MaterialId from materialcourse where CourseId="+Integer.parseInt(Coursecombo.getSelectedItem().toString())+";",QTypes.materialcourse);    
 		         Client.client.handleMessageFromClientUI(msg);
 	    	}
 	    });
@@ -52,16 +53,9 @@ public class ViewMaterialsGui extends JPanel {
 		lblMaterials.setBounds(10, 147, 83, 27);
 		add(lblMaterials);
 		
-		 MaterialCombo = new JComboBox();
-		 MaterialCombo.addMouseListener(new MouseAdapter() {
-		 	@Override
-		 	public void mouseClicked(MouseEvent e) {
-		 		// select MaterialId from sms.materialcourse where CourseId=1234;
-		 		 Message msg=new Message("select  MaterialId from materialcourse where CourseId="+Integer.parseInt(Coursecombo.getSelectedItem().toString())+";",QTypes.materialcourse);    
-		         Client.client.handleMessageFromClientUI(msg);
-		 		
-		 	}
-		 });
+		
+	
+		
 		MaterialCombo.setBounds(66, 172, 138, 27);
 		add(MaterialCombo);
 		

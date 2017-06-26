@@ -184,4 +184,5 @@ public class HomeUI extends JFrame {
     ((HomeUI)Client.clientGUI).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     Client.clientGUI.setVisible(true);
 	}
+	
 }

@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.List;
 import javax.swing.event.ListSelectionListener;
 
+import OurMessage.Message;
+import OurMessage.QTypes;
 import User.HomeUI;
 import chat.Client;
 
@@ -12,7 +14,7 @@ import javax.swing.event.ListSelectionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-
+import chat.Client;
 public class HomeStudent extends JPanel {
 	/**
 	 * Create the panel.
@@ -31,6 +33,7 @@ public class HomeStudent extends JPanel {
 		model.addElement("View Assignment");
 		model.addElement("View Materials");
 		model.addElement("Download Materials");
+		model.addElement("Upload Assignment");
 		JList list = new JList(model);
 		list.addMouseListener(new MouseAdapter() {
 			@Override
@@ -47,29 +50,44 @@ public class HomeStudent extends JPanel {
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new DownloadAssignment(); 
-					 
+						Message msg3=new Message("select distinct CourseId from assignemntcourse;",QTypes.coursedownload);    
+				         Client.client.handleMessageFromClientUI(msg3);
 						break; 
 					case "Blocking parent":
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new BlockingParentGui(); 
+				           Message msg=new Message(" select parent_id from student_parent where student_id="+Client.client.user.getID()+";",QTypes.blockparent); // getting parent id 
+					       Client.client.handleMessageFromClientUI(msg);
+					       Message msg2=new Message(" select id from messages;",QTypes.getidmessage); // getting parent id 
+					       Client.client.handleMessageFromClientUI(msg2);
 						//System.out.print("Blockparentpanel");
 						break; 
 					case "View Assignment":
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new ViewAssignmentGui(); 
+						 Message msg4=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment);    
+				         Client.client.handleMessageFromClientUI(msg4);
 						break;
 					case "View Materials":
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new ViewMaterialsGui(); 
+						 Message msg5=new Message("select distinct CourseId from materialcourse; ",QTypes.coursecombomaterial);    
+				         Client.client.handleMessageFromClientUI(msg5);
 						break;
 					case "Download Materials":
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new DownloadMaterialsGui();
+						Message msg6=new Message("select distinct CourseId from materialcourse;",QTypes.materialcoursedownload);    
+				         Client.client.handleMessageFromClientUI(msg6);
 						break;
+					case "Upload Assignment":
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
+						((HomeUI)Client.clientGUI).resizeHome();
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new UploadAssignment();
 						default:
 							break;
 						}
@@ -82,4 +100,5 @@ public class HomeStudent extends JPanel {
 		panel.setBounds(135, 0, 289, 300);
 		
 	}
+	
 }

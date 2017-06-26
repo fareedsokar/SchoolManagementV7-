@@ -433,7 +433,7 @@ public class Server extends AbstractServer {
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
 				  if(rs.next()) // if it was successfully executed  
 				  {
-					  Request req300=new Request(true,QTypes.blockparent);
+					  Request req300=new Request(rs.getInt(1),QTypes.blockparent); // sending the parent id
 					    try{
 							  client.sendToClient(req300);
 						  }catch(IOException ex){
@@ -451,8 +451,69 @@ public class Server extends AbstractServer {
 					  }
 				  }
 				  break;
+			  case 310:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) // if it was successfully executed  
+				  {
+					  Request req300=new Request(rs.getInt(1),QTypes.blockparent2); // sending the parent id
+					    try{
+							  client.sendToClient(req300);
+						  }catch(IOException ex){
+							  serv.display("["+dtf.format(now)+"] Error Sending true statemnet block parent 310");
+						  }
+					}
+				  else 
+				  {
+					  Request req300=new Request(false,QTypes.blockparent2);
+					  try{
+						  client.sendToClient(req300);
+					  }catch(IOException ex){
+					
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment block parent case 310!");
+					  }
+				  }
+				  break;
+			
+			  case 311:
+				  rs = stmt.executeQuery(((Message) msg).GetQuery());
+				  if(rs.next()) { // Checks for any results and moves cursor to first row,
+					  ArrayList<Integer> alltu=new ArrayList<Integer>();
+					 int i =0;
+					 do{ 
+					    
+					    	alltu.add(Integer.parseInt((rs.getString(1))));
+					
+					    }  while (rs.next());
+					 if (alltu != null && !alltu.isEmpty()) 
+					 {
+						i= alltu.get(alltu.size()-1);
+					} 
+					 else 
+					 {
+						 i=0; 
+						 System.out.println("id_message is empty");
+					 }
+					    Request req310=new Request(i,QTypes.getidmessage);
+					    try{ System.out.print("server310 send to client");
+							  client.sendToClient(req310);
+						  }catch(IOException ex){
+							 //Do Somthing
+							  serv.display("["+dtf.format(now)+"] Error Sending back id num case 310");
+						  }
+					}
+				  else 
+				  {
+					  Request req310=new Request(false,QTypes.getidmessage);
+					  try{
+						  client.sendToClient(req310);
+					  }catch(IOException ex){
+						 //Do Somthing
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					  }
+				  }break; 
 				  
-			 //SECRETARY CASES
+				  
+				  //SECRETARY CASES
 			  case 101:
 				  rs=stmt.executeQuery(((Message)msg).GetQuery());
 				  

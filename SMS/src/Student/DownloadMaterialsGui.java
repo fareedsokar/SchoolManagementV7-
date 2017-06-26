@@ -36,12 +36,13 @@ public class DownloadMaterialsGui extends JPanel {
 		JLabel lblCourseName = new JLabel("Course ID:");
 		lblCourseName.setBounds(20, 56, 119, 26);
 		add(lblCourseName);
-		
+		materialcombo = new JComboBox();
 		 coursecombo = new JComboBox();
 		coursecombo.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) { // filling courses combobox
-				Message msg=new Message("select distinct CourseId from materialcourse;",QTypes.materialcoursedownload);    
+			public void mouseClicked(MouseEvent e) { // filling Material Combo
+				materialcombo.removeAllItems();
+				Message msg=new Message("select  MaterialId from materialcourse where CourseId="+Integer.parseInt(coursecombo.getSelectedItem().toString())+";",QTypes.materialcombodownload);    
 		         Client.client.handleMessageFromClientUI(msg);
 			}
 		});
@@ -52,14 +53,8 @@ public class DownloadMaterialsGui extends JPanel {
 		lblMaterial.setBounds(20, 145, 61, 26);
 		add(lblMaterial);
 		
-		materialcombo = new JComboBox();
-		materialcombo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				 Message msg=new Message("select  MaterialId from materialcourse where CourseId="+Integer.parseInt(coursecombo.getSelectedItem().toString())+";",QTypes.materialcombodownload);    
-		         Client.client.handleMessageFromClientUI(msg);
-			}
-		});
+	
+	
 		materialcombo.setBounds(59, 182, 133, 26);
 		add(materialcombo);
 		
