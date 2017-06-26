@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JFileChooser;
 
 import User.HomeUI;
 import chat.Client;
@@ -32,16 +31,16 @@ public class UploadAssignment extends JPanel {
 		setBounds(135, 0, 289, 300);
 		setLayout(null);
 		newpan.setBounds(135, 0, 289, 300);
-		lblCourseNumber.setBounds(10, 11, 89, 23);
+		lblCourseNumber.setBounds(10, 30, 89, 23);
 		
 		add(lblCourseNumber);
-		coursecombo.setBounds(59, 30, 122, 22);
+		coursecombo.setBounds(96, 31, 122, 22);
 		
 		add(coursecombo);
-		lblAssignment.setBounds(10, 63, 82, 23);
+		lblAssignment.setBounds(10, 84, 82, 23);
 		
 		add(lblAssignment);
-		assignmentcombo.setBounds(68, 80, 122, 23);
+		assignmentcombo.setBounds(96, 85, 122, 23);
 		
 		add(assignmentcombo);
 		Submit.setBounds(10, 225, 89, 23);
