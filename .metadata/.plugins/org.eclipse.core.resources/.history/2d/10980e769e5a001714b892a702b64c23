@@ -57,7 +57,7 @@ public class UploadAssignment extends JPanel {
 		
 		add(Cancel);
 		
-		add(textField); // saving the path in the text field 
+		add(textField);
 		Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				 JFileChooser fileChooser = new JFileChooser();
@@ -77,6 +77,7 @@ public class UploadAssignment extends JPanel {
 			}
 		}});
 		Browse.setBounds(199, 147, 67, 26);
+		
 		add(Browse);
 	}
 }

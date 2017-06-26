@@ -6,12 +6,14 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JFileChooser;
+
+
 import User.HomeUI;
 import chat.Client;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.*;
-
 public class UploadAssignment extends JPanel {
 	private final JLabel lblCourseNumber = new JLabel("Course Number : ");
 	private final JComboBox coursecombo = new JComboBox();
@@ -57,26 +59,13 @@ public class UploadAssignment extends JPanel {
 		
 		add(Cancel);
 		
-		add(textField); // saving the path in the text field 
+		add(textField);
 		Browse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 JFileChooser fileChooser = new JFileChooser();
-				 
-			        // For Directory
-			        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-			 
-			        // For File
-			        //fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-			 
-			        fileChooser.setAcceptAllFileFilterUsed(false);
-			 
-			        int rVal = fileChooser.showOpenDialog(null);
-			        if (rVal == JFileChooser.APPROVE_OPTION) {
-			        	textField.setText(fileChooser.getSelectedFile().toString());
-				
 			}
-		}});
+		});
 		Browse.setBounds(199, 147, 67, 26);
+		
 		add(Browse);
 	}
 }
