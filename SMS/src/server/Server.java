@@ -513,31 +513,29 @@ public class Server extends AbstractServer {
 				  }break; 
 				  
 				  //Teacher Cases 
-			  case 700:
+			  case 700 :
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
-				  System.out.println("case 700 test");
-				  if(rs.next()) { // Checks for any results and moves cursor to first row,
-					 if(Boolean.valueOf(rs.getString(1)) instanceof Boolean) 
-					    if(Boolean.valueOf(rs.getString(1)).equals(true))
-					    {
-					     Request req700=new Request(true,QTypes.EnteringHours);
-					    try{ System.out.print("server700 send to client");
+				  if(rs.next()) // if it was successfully executed  
+				  {
+					  if(rs.getBoolean(1)){
+					  Request req700=new Request(rs.getInt(1),QTypes.EnteringHours); // sending the parent id
+					    try{
 							  client.sendToClient(req700);
 						  }catch(IOException ex){
-							 //Do Somthing
-							  serv.display("["+dtf.format(now)+"] Error Sending back materia.combo in view material statment!");
+							  serv.display("["+dtf.format(now)+"] Error Sending true statemnet block parent 310");
 						  }
 					}
 				  else 
 				  {
-					  Request req306=new Request(false,QTypes.EnteringHours);
+					  Request req700=new Request(false,QTypes.EnteringHours);
 					  try{
-						  client.sendToClient(req306);
+						  client.sendToClient(req700);
 					  }catch(IOException ex){
-						 //Do Somthing
-						  serv.display("["+dtf.format(now)+"] Error Sending back false statment!");
+					
+						  serv.display("["+dtf.format(now)+"] Error Sending back false statment block parent case 310!");
 					  }
-				  }}break; 
+				  }
+				  break;}
 				  
 				  
 				  
