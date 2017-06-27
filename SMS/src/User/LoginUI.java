@@ -28,6 +28,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import Student.*;
+import Teacher.TeacherHomeUI;
 public class LoginUI extends JFrame {
 
 	private JPanel contentPane;
@@ -93,8 +94,9 @@ public class LoginUI extends JFrame {
 					((HomeUI)Client.clientGUI).innerpanel=new HomeStudent();
 					((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
 					break;
-				case 2://System.out.println("Welcome Back Teacher");
-
+				case 2:
+					((HomeUI)Client.clientGUI).innerpanel=new TeacherHomeUI();
+				    ((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
 					break;
 				case 3://System.out.println("Welcome Back System Admin");
 					((HomeUI)Client.clientGUI).innerpanel=new sysAdminHomeUI();

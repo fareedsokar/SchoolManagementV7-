@@ -369,9 +369,26 @@ public class Client extends AbstractClient {
 			((BlockingParentGui)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).id_message=(Integer)((Request)msg).getRequest();
 		}
 		break;
+		
+	case 700:// getting message id number 
+		if(((Request)msg).getRequest() instanceof Boolean)
+		{
+			if(!(Boolean)(((Request)msg).getRequest())){
+				//DB is Empty
+				System.out.print("Error client parent id case 311");
+			}
+		}
+	   if(Boolean.valueOf((String)((Request)msg).getRequest()).equals(true))
+		{//the updating
+			//((Teacher)((HomeStudent)((HomeUI)clientGUI).innerpanel).panel).id_message=(Integer)((Request)msg).getRequest();
+		}
+		break;
+		}
+		
+		
 		}
 	
-	}
+	
 		
 	
 	

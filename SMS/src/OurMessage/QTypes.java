@@ -23,5 +23,6 @@ public class QTypes {
 	public static int materialcoursedownload=307;// combo material download
 	public static int materialcombodownload=308;  
 	public static int blockparent2=310;// updating DB message for blocking parent  
-	public static int getidmessage=311; 
+	public static int getidmessage=311;
+	public static int EnteringHours=700;//Saving entering hours
 }

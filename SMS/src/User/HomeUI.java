@@ -13,7 +13,7 @@ import OurMessage.Message;
 import OurMessage.QTypes;
 import chat.Client;
 import sysAdmin.sysAdminHomeUI;
-
+import Teacher.TeacherHomeUI;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -124,9 +124,9 @@ public class HomeUI extends JFrame {
 		Client.clientGUI.setVisible(true);
 	}
 	public void ChangeJPanel(JPanel panel){
-		((HomeUI)Client.clientGUI).contentPane.remove(((HomeUI)Client.clientGUI).innerpanel);
-		((HomeUI)Client.clientGUI).innerpanel=panel;
-		((HomeUI)Client.clientGUI).contentPane.add(((HomeUI)Client.clientGUI).innerpanel);
+		((HomeUI)Client.clientGUI).innerpanel.remove(((TeacherHomeUI)((HomeUI)Client.clientGUI).innerpanel).contentpane);
+		((TeacherHomeUI)((HomeUI)Client.clientGUI).innerpanel).contentpane=panel;
+		((HomeUI)Client.clientGUI).innerpanel.add(((TeacherHomeUI)((HomeUI)Client.clientGUI).innerpanel).contentpane);
 		((HomeUI)Client.clientGUI).resizeHome();
 	}
 	public void resizeHome(){
