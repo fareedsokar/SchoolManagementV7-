@@ -453,9 +453,9 @@ public class Server extends AbstractServer {
 				  break;
 			  case 310:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
-				  if(rs.next() ||(rs.getBoolean(1))) // if it was successfully executed  
+				  if(rs.next()) // if it was successfully executed  
 				  {
-					  Request req300=new Request(rs.getInt(1),QTypes.blockparent2); // sending true/false
+					  Request req300=new Request(rs.getInt(1),QTypes.blockparent2); // sending the parent id
 					    try{
 							  client.sendToClient(req300);
 						  }catch(IOException ex){

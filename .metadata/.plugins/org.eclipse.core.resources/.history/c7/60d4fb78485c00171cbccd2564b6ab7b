@@ -34,14 +34,13 @@ public class BlockingParentGui extends JPanel {
    public int id_message; 
    private final TextArea contenttextfield = new TextArea();
    private final JLabel lbltoday = new JLabel("");
-   public JLabel newpan=new JLabel(); 
     /**
 	 * Create the panel.
 	 */
 	public BlockingParentGui() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDateTime now = LocalDateTime.now();
-		newpan.setBounds(135, 0, 289, 300);
+		
 		setBounds(135, 0, 289, 300);
 		setLayout(null); 
 		JPanel newpan=new JPanel(); // Creating an Empty Jpanel for the Cancel Button .
@@ -64,8 +63,9 @@ contenttextfield.setBounds(10, 82, 269, 130);
 		btnBlockParent.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
-			    Message  msg=new Message("Insert into blockparent values ("+Client.client.user.getID()+","+parent_id+",blockparent,block my parent,"+2+")",QTypes.blockparent2);
-			    Client.client.handleMessageFromClientUI(msg); // updating in DB      
+			    Message  msg=new Message("Insert into messages values ("+id_message+","+Client.client.user.getID()+",blociking parent,"+contenttextfield.getText()+","+now+",1);",QTypes.blockparent2); // updating DB messages .
+			       
+			       
 			}
 		});
 		btnBlockParent.setBounds(10, 245, 107, 31);
@@ -75,13 +75,6 @@ contenttextfield.setBounds(10, 82, 269, 130);
 		lblMessageContent.setBounds(10, 53, 103, 14);
 		add(lblMessageContent);
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel);
-		((HomeUI)Client.clientGUI).resizeHome();
-		((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=newpan;
-			}
-		});
 	
 		
 		btnCancel.setBounds(177, 247, 102, 27);

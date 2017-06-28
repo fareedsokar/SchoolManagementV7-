@@ -64,8 +64,9 @@ contenttextfield.setBounds(10, 82, 269, 130);
 		btnBlockParent.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
-			    Message  msg=new Message("Insert into blockparent values ("+Client.client.user.getID()+","+parent_id+",blockparent,block my parent,"+2+")",QTypes.blockparent2);
-			    Client.client.handleMessageFromClientUI(msg); // updating in DB      
+			    Message  msg=new Message("Insert into messages values ("+id_message+","+Client.client.user.getID()+",blociking parent,"+contenttextfield.getText()+","+now+",1);",QTypes.blockparent2); // updating DB messages .
+			       
+			       
 			}
 		});
 		btnBlockParent.setBounds(10, 245, 107, 31);

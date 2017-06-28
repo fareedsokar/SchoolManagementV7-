@@ -8,6 +8,7 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="model"/>
 			<item value="cancel"/>
 			<item value="download"/>
 			<item value="Char"/>
