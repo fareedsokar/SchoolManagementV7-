@@ -63,8 +63,9 @@ public class HomeStudent extends JPanel {
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new BlockingParentGui(); 
-				           Message msg=new Message(" SELECT parent_id from student_parent where student_id="+Client.client.user.getID()+";",QTypes.blockparent); // getting parent id 
-				           Client.client.handleMessageFromClientUI(msg);
+				           Message msg=new Message(" select parent_id from student_parent where student_id="+Client.client.user.getID()+";",QTypes.blockparent); // getting parent id 
+					       Client.client.handleMessageFromClientUI(msg);
+			
 					       ((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						//System.out.print("Blockparentpanel");
 						break; 

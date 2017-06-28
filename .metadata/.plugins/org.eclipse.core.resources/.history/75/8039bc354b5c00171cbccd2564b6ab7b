@@ -432,9 +432,9 @@ public class Server extends AbstractServer {
 			  case 300:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
 				  System.out.println(rs.getString(1));
-				  if(rs.next()) // if it was successfully executed  
+				  if(rs.getBoolean(1)) // if it was successfully executed  
 				  { 
-					  System.out.println(rs.getInt(1));
+					  System.out.println(rs.getString(1));
 					  Request req300=new Request(rs.getInt(1),QTypes.blockparent); // sending the parent id
 					    try{
 							  client.sendToClient(req300);
@@ -455,15 +455,14 @@ public class Server extends AbstractServer {
 				  break;
 			  case 310:
 				  rs = stmt.executeQuery(((Message) msg).GetQuery());
-				 // System.out.print(rs.getInt(1)); // printing parent id 
-				  if(rs.next()) // if it was successfully executed  
-				  {	  
-				  Request req310=new Request(true,QTypes.blockparent2); // sending true/false
-				    try{
-						  client.sendToClient(req310);
-					  }catch(IOException ex){
-						  serv.display("["+dtf.format(now)+"] Error Sending true statemnet block parent 310");
-					  }
+				  if(rs.next() ||(rs.getBoolean(1))) // if it was successfully executed  
+				  {
+					  Request req300=new Request(rs.getInt(1),QTypes.blockparent2); // sending true/false
+					    try{
+							  client.sendToClient(req300);
+						  }catch(IOException ex){
+							  serv.display("["+dtf.format(now)+"] Error Sending true statemnet block parent 310");
+						  }
 					}
 				  else 
 				  {

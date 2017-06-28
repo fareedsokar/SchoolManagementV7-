@@ -30,7 +30,7 @@ public class BlockingParentGui extends JPanel {
     private String pid; 
    public JLabel lblMsg;
    public  int count;
-   public int parent_id=0;
+   public int parent_id;
    public int id_message; 
    private final TextArea contenttextfield = new TextArea();
    private final JLabel lbltoday = new JLabel("");
