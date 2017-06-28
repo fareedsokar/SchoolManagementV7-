@@ -371,7 +371,7 @@ public class Client extends AbstractClient {
 		break;
 		
 	case 700:// getting message id number 
-		if(((Request)msg).getRequest() instanceof Integer)
+		if(((Request)msg).getRequest() instanceof Boolean)
 		{
 			if(!(Boolean)(((Request)msg).getRequest())){
 				//DB is Empty

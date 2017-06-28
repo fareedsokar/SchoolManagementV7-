@@ -514,17 +514,16 @@ public class Server extends AbstractServer {
 				  
 				  //Teacher Cases 
 			  case 700 :
-				  rs = stmt.executeQuery(((Message) msg).GetQuery());
-				  if(rs.next()) // if it was successfully executed  
+				 int result = stmt.executeUpdate(((Message) msg).GetQuery());
+				  if(result==1) // if it was successfully executed  
 				  {
-					  if(rs.getBoolean(1)){
-					  Request req700=new Request(rs.getInt(1),QTypes.EnteringHours); // sending the parent id
+					  Request req700=new Request(true,QTypes.EnteringHours); // sending the parent id
 					    try{
 							  client.sendToClient(req700);
 						  }catch(IOException ex){
 							  serv.display("["+dtf.format(now)+"] Error Sending true statemnet block parent 310");
 						  }
-					}
+				  }
 				  else 
 				  {
 					  Request req700=new Request(false,QTypes.EnteringHours);
@@ -535,7 +534,7 @@ public class Server extends AbstractServer {
 						  serv.display("["+dtf.format(now)+"] Error Sending back false statment block parent case 310!");
 					  }
 				  }
-				  break;}
+				  break;
 				  
 				  
 				  

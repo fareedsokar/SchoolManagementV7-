@@ -50,7 +50,7 @@ public class TeacherEnteringHours extends JPanel {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 	Message Msg=new Message("insert into teacher values ("+308072206+","+15+","+20+","+8+");",QTypes.EnteringHours);
+				 	Message Msg=new Message(" update teacher set user_id=124 ,TU_id=15,maxhours=20,currenthours=8 where user_id=124;",QTypes.EnteringHours);
 				 	Client.client.handleMessageFromClientUI(Msg);
 				 	
 			}
