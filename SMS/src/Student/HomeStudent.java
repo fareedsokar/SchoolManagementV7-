@@ -42,52 +42,68 @@ public class HomeStudent extends JPanel {
 					switch((String)Res)
 					{
 					case "View Report": 
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new ViewReportGui(); 
+						//((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 							break;
 					case "Download Assignment":
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new DownloadAssignment(); 
 						Message msg3=new Message("select distinct CourseId from assignemntcourse;",QTypes.coursedownload);    
 				         Client.client.handleMessageFromClientUI(msg3);
-						break; 
+				         ((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
+				         break; 
 					case "Blocking parent":
+
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new BlockingParentGui(); 
 				           Message msg=new Message(" select parent_id from student_parent where student_id="+Client.client.user.getID()+";",QTypes.blockparent); // getting parent id 
 					       Client.client.handleMessageFromClientUI(msg);
 					       Message msg2=new Message(" select id from messages;",QTypes.getidmessage); // getting parent id 
 					       Client.client.handleMessageFromClientUI(msg2);
+					       ((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						//System.out.print("Blockparentpanel");
 						break; 
 					case "View Assignment":
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new ViewAssignmentGui(); 
 						 Message msg4=new Message("select distinct CourseId from assignemntcourse;",QTypes.courseassignment);    
 				         Client.client.handleMessageFromClientUI(msg4);
+				         ((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						break;
 					case "View Materials":
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new ViewMaterialsGui(); 
 						 Message msg5=new Message("select distinct CourseId from materialcourse; ",QTypes.coursecombomaterial);    
 				         Client.client.handleMessageFromClientUI(msg5);
+				         ((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						break;
 					case "Download Materials":
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new DownloadMaterialsGui();
 						Message msg6=new Message("select distinct CourseId from materialcourse;",QTypes.materialcoursedownload);    
 				         Client.client.handleMessageFromClientUI(msg6);
+				         ((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						break;
 					case "Upload Assignment":
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).remove(panel);
 						((HomeUI)Client.clientGUI).resizeHome();
 						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel=new UploadAssignment();
+						((HomeStudent)((HomeUI)Client.clientGUI).innerpanel).panel.repaint();
+						break; 
 						default:
 							break;
 						}

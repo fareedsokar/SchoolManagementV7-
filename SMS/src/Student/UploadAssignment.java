@@ -63,7 +63,7 @@ public class UploadAssignment extends JPanel {
 				 JFileChooser fileChooser = new JFileChooser();
 				 
 			        // For Directory
-			        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 			 
 			        // For File
 			        //fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
